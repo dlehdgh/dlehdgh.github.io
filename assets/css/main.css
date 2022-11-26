@@ -1,0 +1,12 @@
+.post-preview {}
+.post-preview a {
+	color: var(--bs-dark);
+	text-decoration: none;
+}
+.post-preview a:hover,
+.post-preview a:focus {
+	color: var(--bs-primary);
+}
+.post-title {
+	font-weight: bold;
+}

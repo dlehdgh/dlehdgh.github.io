@@ -1,0 +1,62 @@
+---
+layout: default
+---
+
+<header class="post-header">
+	<h2>{{ page.title }}</h2>
+	<p>
+		Posted by
+		<strong>{% if page.author %}{{ page.author }}
+		{% else %}{{ site.author }}{% endif %}</strong>
+		on {{ page.date | date_to_string | date: site.date_time_format }}
+	</p>
+</header>
+<article class="post-body">
+	{{ content }}
+	<hr>
+	<ul class="list-group">
+		{% if page.categories %}
+			<li class="list-group-item">
+				<strong class="me-2">Category</strong>
+				{% for category in page.categories %}
+				<span class="btn btn-outline-success btn-sm">{{ category }}</span>
+				{% endfor %}
+			</li>
+		{% endif %}
+		{% if page.tags %}
+			<li class="list-group-item">
+				<strong class="me-2">Tags</strong>
+				{% for tag in page.tags %}
+				<a href="{{ site.baseurl }}/tags/?tag={{ tag }}" class="btn btn-outline-primary btn-sm">#{{ tag }}</a>&nbsp;
+				{% endfor %}
+			</li>
+		{% endif %}
+	</ul>
+	<!-- <p>Category: 
+		{% for category in page.categories %}
+		<span class="btn btn-outline-success btn-sm">{{ category }}</span>
+		{% endfor %}
+	</p>
+	<p>Tags: 
+		{% for tag in page.tags %}
+		<a href="{{ site.baseurl }}/tags/?tag={{ tag }}" class="btn btn-outline-primary btn-sm">#{{ tag }}</a>&nbsp;
+		{% endfor %}
+	</p> -->
+	<hr>
+</article>
+<footer class="post-footer row">
+	<div class="col">
+	{% if page.previous.url %}
+		<a href="{{ page.previous.url | prepend: site.baseurl | replace: '//', '/' }}" class="btn btn-primary" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="{{ page.previous.title }}">&larr; 이전글</a>
+	{% else %}
+		<a href="#" class="btn btn-primary disabled">&larr; 이전글</a>
+	{% endif %}
+	</div>
+	<div class="col text-end">
+	{% if page.next.url %}
+		<a href="{{ page.next.url | prepend: site.baseurl | replace: '//', '/' }}" class="btn btn-primary" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="{{ page.next.title }}">다음글 &rarr;</a>
+	{% else %}
+		<a href="#" class="btn btn-primary disabled">다음글 &rarr;</a>
+	{% endif %}
+	</div>
+</footer>

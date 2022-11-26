@@ -1,0 +1,29 @@
+<!-- Skip Navigation -->
+<div class="visually-hidden-focusable bg-dark">
+	<div class="container-xl">
+		<a href="#main" class="d-inline-flex p-2 m-1 text-light text-decoration-none">본문 바로가기</a>
+	</div>
+</div>
+
+<!-- Navigation -->
+<nav class="navbar navbar-expand-lg sticky-top navbar-dark bg-primary" aria-label="매인 네비게이션">
+	<!-- <div class="container-fluid"> -->
+	<div class="container-xxl">
+		<!-- Logo -->
+		<a href="{{ '/' | relative_url }}" class="navbar-brand">{{ site.title | escape }}</a>
+		<!-- Mobile -->
+		<button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#games-navbar" aria-controls="games-navbar" aria-expanded="false" aria-label="메뉴">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div id="games-navbar" class="collapse navbar-collapse">
+			<!-- Navbar -->
+			<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+			{% for node in site.data.navigation.main %}
+				<li class="nav-item">
+					<a href="{{ site.baseurl }}{{ node.url }}" class="nav-link{% if page.url == node.url %} active{% endif %}">{{ node.title }}</a>
+				</li>
+			{% endfor %}
+			</ul>
+		</div>
+	</div>
+</nav>

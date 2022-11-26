@@ -1,0 +1,11 @@
+main:
+  - title: "접근성이란"
+    url: /about/
+  - title: "접근성 테스트"
+    url: /testing/
+  - title: "WAI-ARIA"
+    url: /wai-aria/
+  - title: "Posts"
+    url: /posts/
+  - title: "Tags"
+    url: /tags/

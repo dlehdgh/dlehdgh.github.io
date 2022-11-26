@@ -1,0 +1,36 @@
+---
+layout: page
+title: Tags
+---
+
+<!-- {% assign count = site.tags | size %} -->
+<ul id="pills-tab" class="nav nav-pills mb-3" role="tablist">
+	{% for tag in site.tags %}
+		<li class="nav-item" role="presentation">
+			<button type="button" id="{{ tag[0] }}-tab" class="nav-link" data-bs-toggle="pill" data-bs-target="#{{ tag[0] }}" role="tab" aria-controls="{{ tag[0] }}" aria-selected="flase">#{{ tag[0] }}</button>
+		</li>
+	{% endfor %}
+</ul>
+<div class="tab-content" id="pills-tabContent">
+	{% for tag in site.tags %}
+		<div id="{{ tag[0] }}" class="tab-pane fade list-group" role="tabpanel" aria-labelledby="{{ tag[0] }}-tab" tabindex="0">
+		<!--
+		{% assign total_post = tag[1] | size %}
+		{% assign total_page = total_post | divided_by: site.paginate | ceil %}
+		{% assign first = paginator.page | divided_by: site.paginate | floor | times: site.paginate | plus: 1 %}
+		{% assign posts = tag[1] | slice: 0, 10 %}
+		-->
+		{% for post in tag[1] %}
+			<a href="{{ post.url | prepend: site.baseurl | replace: '//', '/' }}" class="list-group-item list-group-item-action">
+				<h3 class="h4">{{ post.title }}</h3>
+				<p class="mb-0">
+					Posted by
+					<strong>{% if post.author %}{{ post.author }}
+					{% else %}{{ site.author }}{% endif %}</strong>
+					on {{ post.date | date: site.date_format }}
+				</p>
+			</a>
+		{% endfor %}
+		</div>
+	{% endfor %}
+</div>
