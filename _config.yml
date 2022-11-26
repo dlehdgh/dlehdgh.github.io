@@ -23,7 +23,7 @@ email: your-email@example.com
 description: >- # "baseurl:"이 나올 때까지 줄 바꿈을 무시함
   Web Accessibility Testing Page
 author: addmin
-baseurl: "/blog" # 사이트의 하위 경로, e.g. /blog
+baseurl: "" # 사이트의 하위 경로, e.g. /blog
 url: "https://jekyllblog.run.goorm.io" # 사이트의 기본 호스트 이름 및 프로토콜, e.g. http://example.com
 # permalink: /:categories/:year/:month/:day/:title:output_ext
 # permalink: /:categories/:title
