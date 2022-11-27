@@ -3,10 +3,14 @@ $(document).ready(() => {
 	const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl));
 
 	let tag = getQuery('tag');
-	let target = tag ? `#${tag}-tab` : `#${$('#pills-tab .nav-link').first()[0].id}`;
-	console.log('target:', target);
-	let tab = new bootstrap.Tab(target);
-	tab.show();
+	let first = $('#pills-tab .nav-link').first();
+	if(tag){
+		let tab = new bootstrap.Tab(tag);
+		tab.show();
+	}else if(first.length > 0){
+		let tab = new bootstrap.Tab(`#${first.attr('id')}`);
+		tab.show();
+	}
 });
 
 const getQuery = (key) => {
