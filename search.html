@@ -1,0 +1,24 @@
+---
+layout: default
+title: Search
+permalink: /search/
+---
+
+<input type="search" id="search-input" class="form-control" placeholder="Search" aria-label="검색">
+<hr>
+<section id="results-container" class="list-group"></section>
+
+<!-- Script pointing to simple-jekyll-search.js -->
+<script src="{{ "/assets/js/simple-jekyll-search.js" | prepend: site.baseurl }}"></script>
+<script type="text/javascript">
+	SimpleJekyllSearch({
+		searchInput: document.getElementById('search-input'),
+		resultsContainer: document.getElementById('results-container'),
+		json: '{{ '/search.json' | prepend: site.baseurl }}',
+		searchResultTemplate: '<a href="{url}" class="list-group-item list-group-item-action"><h3 class="h4">{title}</h3><p class="mb-0">Posted by <strong>{author}</strong> on {date}</p></a>',
+		noResultsText: '검색결과가 없습니다.',
+		limit: 10000,
+		fuzzy: false,
+		exclude: ['Welcome']
+	});
+</script>
