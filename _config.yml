@@ -38,8 +38,8 @@ github_username:  dlehdgh
 # Build settings
 theme: minima
 
-markdown: kramdown
-highlighter: rouge
+# markdown: kramdown
+# highlighter: rouge
 
 paginate: 10
 paginate_path: "/posts/page:num/"
