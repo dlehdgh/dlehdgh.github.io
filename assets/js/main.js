@@ -86,5 +86,5 @@ const codeGenerator = () => {
 	let tools = $('<div class="highlight-tools">');
 	tools.append('<button type="button" class="btn btn-outline-primary btn-run" aria-label="코드 실행" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="코드 실행"><i class="bi bi-caret-right-fill"></i></button>');// 코드 실행
 	tools.append('<button type="button" class="btn btn-outline-primary btn-copy" aria-label="코드 복사" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="코드 복사"><i class="bi bi-clipboard"></i></button>');// 코드 복사
-	$('pre').attr('tabindex', '0').before(tools);
+	$('pre').attr('tabindex', '0').after(tools);
 };
