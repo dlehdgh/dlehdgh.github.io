@@ -1,5 +1,5 @@
 main:
-  - title: "접근성이란"
+  - title: "About"
     url: /about/
   - title: "접근성 테스트"
     url: /testing/
