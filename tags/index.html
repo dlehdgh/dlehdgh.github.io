@@ -1,9 +1,8 @@
 ---
 layout: page
-title: Tags
+title: 태그
 ---
 
-<!-- {% assign count = site.tags | size %} -->
 <ul id="tags-tab" class="nav nav-pills mb-3" role="tablist">
 	{% for tag in site.tags %}
 		<li class="nav-item" role="presentation">
@@ -11,26 +10,17 @@ title: Tags
 		</li>
 	{% endfor %}
 </ul>
-<div class="tab-content" id="pills-tabContent">
+<div class="tab-content mb-3" id="pills-tabContent">
 	{% for tag in site.tags %}
-		<div id="{{ tag[0] }}" class="tab-pane fade list-group" role="tabpanel" aria-labelledby="{{ tag[0] }}-tab" tabindex="0">
-		<!--
-		{% assign total_post = tag[1] | size %}
-		{% assign total_page = total_post | divided_by: site.paginate | ceil %}
-		{% assign first = paginator.page | divided_by: site.paginate | floor | times: site.paginate | plus: 1 %}
-		{% assign posts = tag[1] | slice: 0, 10 %}
-		-->
-		{% for post in tag[1] %}
-			<a href="{{ post.url | prepend: site.baseurl | replace: '//', '/' }}" class="list-group-item list-group-item-action">
-				<h3 class="h4">{{ post.title }}</h3>
-				<p class="mb-0">
-					Posted by
-					<strong>{% if post.author %}{{ post.author }}
-					{% else %}{{ site.author }}{% endif %}</strong>
-					on {{ post.date | date: site.date_format }}
-				</p>
-			</a>
-		{% endfor %}
+		<!-- <div id="{{ tag[0] }}" class="post-group tab-pane fade" role="tabpanel" aria-labelledby="{{ tag[0] }}-tab" tabindex="0" data-tags="{{ tag[0] }}"> -->
+		<div id="{{ tag[0] }}" class="tab-pane fade" role="tabpanel" aria-labelledby="{{ tag[0] }}-tab" tabindex="0">
+			<div class="post-group" data-tags="{{ tag[0] }}"></div>
+			<div class="paginate btn-group"></div>
+			{%- comment -%}
+			{%- for post in tag[1] -%}
+				{%- include postlist.html post=post -%}
+			{%- endfor -%}
+			{%- endcomment -%}
 		</div>
 	{% endfor %}
 </div>
