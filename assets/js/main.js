@@ -88,7 +88,7 @@ const copyClip = (event) => {
 // 코드 실행
 const codeRun = (event) => {
 	let code = $(event.delegateTarget).parent().next().text();
-	let win = window.open('/blog/example.html', '_blank');
+	let win = window.open('/example.html', '_blank');
 	win.onload = function(){
 		win.document.body.innerHTML = code;
 	}
@@ -120,7 +120,7 @@ const postCheck = (key) => {
 	}
 };
 const getPost = (key, value) => {
-	fetch('/blog/search.json').then(response => {
+	fetch('/search.json').then(response => {
 		return response.json();
 	}).then(jsondata => {
 		// 현제 카테고리의 포스트 추출
