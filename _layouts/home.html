@@ -4,41 +4,56 @@ layout: default
 
 <header>
 	<h2>
-		{% if page.title %}{{ page.title }}
-		{% else %}{{ site.title }}{% endif %}
+		{%- if page.title -%}
+		{{ page.title }}
+		{%- else -%}
+		{{ site.title }}
+		{%- endif -%}
 	</h2>
 	<p>
-		{% if page.description %}{{ page.description }}
-		{% else %}{{ site.description }}{% endif %}
+		{%- if page.description -%}
+		{{ page.description }}
+		{%- else -%}
+		{{ site.description }}
+		{%- endif -%}
 	</p>
 </header>
 
 {{ content }}
 
-{% for post in site.posts limit: 5 %}
-	<article class="post-preview">
-		<a href="{{ post.url | prepend: site.baseurl | replace: '//', '/' }}">
-			<h3 class="post-title">{{ post.title }}</h3>
-			{% if post.subtitle %}
+<article class="post-group">
+	{%- for post in site.posts limit: 5 -%}
+		{%- include postlist.html post=post -%}
+	{%- endfor -%}
+	
+	{%- comment -%}
+	{%- include postlist.html posts=site.posts -%}
+	{%- for post in site.posts limit: 5 -%}
+		<div class="post-item">
+			<h3 class="post-title">
+				<a href="{{ post.url | prepend: site.baseurl | replace: '//', '/' }}">{{ post.title }}</a>
+			</h3>
+			{%- comment -%}
+			{%- if post.subtitle -%}
 			<h4 class="post-subtitle">{{ post.subtitle }}</h4>
-			{% else %}
-			<h4 class="post-subtitle">{{ post.excerpt | strip_html | truncatewords: 15 }}</h4>
-			{% endif %}
-		</a>
-		<p class="post-meta">
-			Posted by <stroke>{% if post.author %}{{ post.author }}
-			{% else %}{{ site.author }}{% endif %}</stroke> on {{ post.date | date: site.date_format }}
-		</p>
-	</article>
-	<hr>
-	<!-- <a href="{{ post.url | prepend: site.baseurl | replace: '//', '/' }}" class="list-group-item list-group-item-action d-flex justify-content-between">
-		<h3 class="h4"></h3>
-		<p class="mb-0">
-			Posted by
-			<strong>{% if post.author %}{{ post.author }}
-			{% else %}{{ site.author }}{% endif %}</strong>
-			on {{ post.date | date: site.date_format }}
-		</p>
-	</a> -->
-{% endfor %}
+			{%- else -%}
+			<h4 class="post-subtitle">{{ include.excerpt | strip_html | truncatewords: 15 }}</h4>
+			{%- endif -%}
+			{%- endcomment -%}
+			<p class="post-meta">
+				<i class="bi bi-person-fill" aria-hidden="true"></i>
+				<span aria-description="작성자">
+					{%- if post.author -%}
+					{{ post.author }}
+					{%- else -%}
+					{{ site.author }}
+					{%- endif -%}
+				</span>
+				<i class="fa-solid fa-calendar-days" aria-hidden="true"></i>
+				<span aria-description="등록일">{{ post.date | date: site.date_format }}</span>
+			</p>
+		</div>
+	{%- endfor -%}
+	{%- endcomment -%}
+</article>
 <a href="{{ "/posts/" | relative_url }}" class="btn btn-primary">더보기 &rarr;</a>

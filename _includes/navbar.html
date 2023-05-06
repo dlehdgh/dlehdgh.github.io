@@ -7,7 +7,6 @@
 
 <!-- Navigation -->
 <nav class="navbar navbar-expand-lg sticky-top navbar-dark bg-primary" aria-label="매인 네비게이션">
-	<!-- <div class="container-fluid"> -->
 	<div class="container-xxl">
 		<!-- Logo -->
 		<a href="{{ '/' | relative_url }}" class="navbar-brand">{{ site.title | escape }}</a>
@@ -18,13 +17,22 @@
 		<div id="games-navbar" class="collapse navbar-collapse">
 			<!-- Navbar -->
 			<ul class="navbar-nav me-auto mb-2 mb-lg-0">
-				{% for node in site.data.navigation.main %}
+				{%- for node in site.data.navigation.main -%}
 					<li class="nav-item">
-						<a href="{{ site.baseurl }}{{ node.url }}" class="nav-link{% if page.url == node.url %} active{% endif %}">{{ node.title }}</a>
+						<a href="{{ node.url | prepend: site.baseurl }}"
+						{%- if page.url == node.url -%}
+						class="nav-link active" aria-current="page"
+						{%- else -%}
+						class="nav-link"
+						{%- endif -%}
+						>{{ node.title }}</a>
 					</li>
-				{% endfor %}
+				{%- endfor -%}
 				<li class="nav-item">
-					<a href="{{ '/search/' | prepend: site.baseurl }}" class="nav-link ms-md-4 fw-bolder" aria-label="검색">
+					<!-- <a href="{{ '/search/' | prepend: site.baseurl }}" class="nav-link ms-md-4 fw-bolder" aria-label="검색">
+						<i class="bi bi-search" aria-hidden="true"></i>
+					</a> -->
+					<a href="#" class="nav-link" aria-label="검색" data-bs-toggle="modal" data-bs-target="#search-modal">
 						<i class="bi bi-search" aria-hidden="true"></i>
 					</a>
 				</li>

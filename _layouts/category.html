@@ -1,34 +1,20 @@
 ---
-layout: default
+layout: page
 ---
 
-<header>
-	<h2>{{ page.title }}</h2>
-	{% if page.description %}
-	<p>{{ page.description }}</p>
-	{% endif %}
-</header>
-<article>
-	{% assign state = false %}
-	{% for category in site.categories %}
-		{% if page.category == category[0] %}
-			{% assign state = true %}
-			<div class="list-group">
-				{% for post in category[1] %}
-					<a href="{{ post.url | prepend: site.baseurl | replace: '//', '/' }}" class="list-group-item list-group-item-action">
-						<h3 class="h4">{{ post.title }}</h3>
-						<p class="mb-0">
-							Posted by
-							<strong>{% if post.author %}{{ post.author }}
-							{% else %}{{ site.author }}{% endif %}</strong>
-							on {{ post.date | date: site.date_format }}
-						</p>
-					</a>
-				{% endfor %}
-			</div>
-		{% endif %}
-	{% endfor %}
-	{% if state == false %}
-		<p>카테고리에 포스트가 없습니다.</p>
-	{% endif %}
-</article>
+<p>총 게시글 수: <span class="text-primary">{{ site.categories[page.category] | size }}개</span></p>
+<div class="post-group" data-category="{{ page.category }}" data-postlist="{{ site.paginate }}"></div>
+<div class="paginate btn-group"></div>
+
+{%- comment -%}
+{%- assign count = site.categories[page.category] | size -%}
+<p>총 게시글 수: <span class="text-primary">{{ count }}개</span></p>
+<div class="post-group">
+	{%- for post in site.categories[page.category] -%}
+		{%- include postlist.html post=post -%}
+	{%- endfor -%}
+	{%- if count == 0 -%}
+		<p>카테고리에 게시글이 없습니다.</p>
+	{%- endif -%}
+</div>
+{%- endcomment -%}

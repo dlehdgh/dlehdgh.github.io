@@ -1,11 +1,21 @@
 main:
-  - title: "About"
+  - title: "소개"
     url: /about/
+  #- title: "접근성 테스트"
+  #  url: /testing/
+  #- title: "WAI-ARIA"
+  #  url: /wai-aria/
+  - title: "포스트"
+    url: /posts/
+  #- title: "Categories"
+  #  url: /category/
+  - title: "태그"
+    url: /tags/
+
+side:
   - title: "접근성 테스트"
+    id: "testing"
     url: /testing/
   - title: "WAI-ARIA"
+    id: "wai-aria"
     url: /wai-aria/
-  - title: "Posts"
-    url: /posts/
-  - title: "Tags"
-    url: /tags/
