@@ -10,6 +10,7 @@
 		{% include sidebar.html %}
 		<main class="bd-main col-md-10">
 			<h1 id="main" class="visually-hidden">본문 영역</h1>
+			{%- include breadcrumbs.html -%}
 			{{ content }}
 		</main>
 	</div>
