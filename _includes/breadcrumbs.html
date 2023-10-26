@@ -19,7 +19,7 @@
 		{% assign crumbs = page.url | split: '/' %}
 		{% assign navbar = site.data.locals[site.lang].navbar %}
 		<li class="breadcrumb-item">
-			<a href="{{ '/' | relative_url }}">{{ navbar.home }}</a>
+			<a href="{{ '/' | relative_url }}">{{ navbar.home | default: '홈' }}</a>
 		</li>
 		{% for crumb in crumbs offset: 1 %}
 			{% if forloop.last %}
