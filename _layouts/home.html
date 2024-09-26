@@ -27,7 +27,9 @@ layout: default
 	<div class="tag-cloud">
 		{%- capture tags -%}
 			{% for tag in site.tags -%}
+				{%- if tag[1].size > 1 -%}
 				{{ tag[1].size | plus: 1000 }}#{{ tag[0] }}#{{ tag[1].size }}{%- unless forloop.last -%}|{%- endunless %}
+				{%- endif -%}
 			{% endfor -%}
 		{% endcapture -%}
 		{% assign tags = tags | split: "|" | sort | reverse -%}
