@@ -23,7 +23,7 @@ email: dlehdgh2@naver.com
 description: >- # "baseurl:"이 나올 때까지 줄 바꿈을 무시함
   Web Accessibility Testing Page
 author: dlehdgh
-baseurl: "/blog" # 사이트의 하위 경로, e.g. /blog
+baseurl: "" # 사이트의 하위 경로, e.g. /blog
 url: "https://dlehdgh.github.io" # 사이트의 기본 호스트 이름 및 프로토콜, e.g. http://example.com
 permalink: /:categories/:title/ # 포스트 주소 e.g. /:categories/:year/:month/:day/:title:output_ext
 
