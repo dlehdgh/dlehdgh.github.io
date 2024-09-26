@@ -1,0 +1,12 @@
+---
+layout: default
+---
+
+{% include header.html meta=false %}
+
+<article class="page-content">
+	{%- if page.toc -%}
+		{% include toc.html html=content %}
+	{% endif -%}
+	{{ content }}
+</article>

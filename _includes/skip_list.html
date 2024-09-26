@@ -1,0 +1,8 @@
+<li>
+	<a href="#{{ include.title | slugify }}" class="btn btn-primary">
+		<strong>
+			<i class="{{ include.fa }}" aria-hidden="true"></i> {{ include.title | capitalize }}
+		</strong>
+		<span class="badge text-bg-light">{{ include.size }}</span>
+	</a>
+</li>

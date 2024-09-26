@@ -1,0 +1,65 @@
+<button type="button" id="btn-back-to-top" class="btn btn-secondary" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="{{ site.data.ui-text.label.go_top }}" aria-label="{{ site.data.ui-text.label.go_top }}">Top</button>
+<footer class="resume-footer">
+	<h1 class="h2">
+		<a href="{{ '/' | relative_url }}" class="text-dark">{{ site.title }}</a>
+	</h1>
+	<!-- HitCount
+	[![HitCount](https://img.shields.io/endpoint?url=https%3A%2F%2Fhits.dwyl.com%2Fdlehdgh%2Fblog.json&style=flat-square&logo=openstreetmap&logoColor=%23ffff00&label=%EB%B0%A9%EB%AC%B8%EC%9E%90%EC%88%98&labelColor=%23000000&color=%23000000)](http://hits.dwyl.com/dlehdgh/blog) -->
+	<!-- <a href="http://hits.dwyl.com/dlehdgh/blog">
+		<img src="https://img.shields.io/endpoint?url=https%3A%2F%2Fhits.dwyl.com%2Fdlehdgh%2Fblog.json&style=flat-square&logo=openstreetmap&logoColor=%23ffff00&label=%EB%B0%A9%EB%AC%B8%EC%9E%90%EC%88%98&labelColor=%23000000&color=%23000000" alt="HitCount">
+	</a> -->
+	<div class="social-icons">
+		<a href="{{ 'feed.xml' | relative_url }}" class="social-icon" target="_blank" aria-label="RSS">
+			<i class="fas fa-rss text-info" aria-hidden="true"></i>
+		</a>
+		{% if site.email -%}
+		<a href="mailto:{{ site.email }}" class="social-icon" aria-label="E-mail">
+			<i class="fas fa-envelope text-warning" aria-hidden="true"></i>
+		</a>
+		{% endif -%}
+		{% if site.github_username -%}
+		<a href="https://github.com/{{ site.github_username }}" target="_blank" class="social-icon" target="_blank" aria-label="Github">
+			<i class="fab fa-github" aria-hidden="true"></i>
+		</a>
+		{% endif -%}
+		{% if site.twitter_username -%}
+		<a href="https:​/​/​twitter.com/{{ site.twitter_username }}" class="social-icon" target="_blank" aria-label="Twitter">
+			<i class="fab fa-twitter" aria-hidden="true"></i>
+		</a>
+		{% endif -%}
+		{% if site.facebook_username -%}
+		<a href="https://www.facebook.com/{{ site.facebook_username }}" class="social-icon" target="_blank" aria-label="Facebook">
+			<i class="fab fa-facebook-f" aria-hidden="true"></i>
+		</a>
+		{% endif -%}
+	</div>
+	<address>&copy; 2017. <strong>{{ site.title }}</strong> all rights reserved.</address>
+</footer>
+
+<!-- Search Modal -->
+<div id="search-modal" class="modal fade" tabindex="-1" aria-labelledby="search-label" aria-hidden="true">
+	<div class="modal-dialog modal-dialog-scrollable modal-lg">
+		<div class="modal-content">
+			<div class="modal-header">
+				<form class="search-form card border-primary">
+					<div class="card-body">
+						<label for="search-input" class="d-flex align-items-center">
+							<i class="fa-solid fa-fw fa-search text-primary" aria-hidden="true"></i>
+							<span class="visually-hidden">{{ site.data.ui-text.navbar.search }}</span>
+						</label>
+						<input type="search" id="search-input" class="form-control form-control-lg p-0 ps-2 border-0" placeholder="Search">
+					</div>
+				</form>
+			</div>
+			<div class="modal-body">
+				<div id="results-container" class="list-group">
+					<p class="mb-0">{{ site.data.ui-text.label.nosearch }}</p>
+				</div>
+			</div>
+			<div class="modal-footer">
+				창을 닫으려면 <code>Esc</code>키를 누르세요.&nbsp;
+				<button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
+			</div>
+		</div>
+	</div>
+</div>

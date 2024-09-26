@@ -1,0 +1,15 @@
+{%- assign post = include.post -%}
+<div class="post-item">
+	<h3 class="post-title"><a href="{{ post.url | relative_url | replace: '//', '/' }}">{{ post.title }}</a></h3>
+	<small class="post-meta">
+		{% if post.date -%}
+		{% include datetime.html date=post.date format=site.date_format %}
+		{%- endif %}
+		{% include read_time.html %}
+		{% if post.categories -%}
+		<i class="fas fa-folder-open" aria-hidden="true"></i>
+		<span class="visually-hidden">{{ site.data.ui-text.navbar.categories }}:</span>
+		<span>{{ post.categories | array_to_sentence_string  }}</span>
+		{%- endif %}
+	</small>
+</div>

@@ -1,0 +1,24 @@
+---
+layout: null
+---
+
+[
+	{%- for post in site.posts -%}
+		{
+			"title": "{{ post.title | escape }}",
+			{%- if post.category -%}
+			"category": "{{ post.category }}",
+			{%- else -%}
+			"category": "{{ post.categories }}",
+			{%- endif -%}
+			"tags": "{{ post.tags | join: ', ' }}",
+			"url": "{{ site.baseurl }}{{ post.url }}",
+			"date": "{{ post.date | date: site.date_format }}",
+			{%- if post.author -%}
+			"author": "{{ post.author }}"
+			{%- else -%}
+			"author": "{{ site.author }}"
+			{%- endif -%}
+		} {%- unless forloop.last -%},{%- endunless -%}
+	{%- endfor -%}
+]

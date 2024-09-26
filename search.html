@@ -1,0 +1,32 @@
+---
+layout: page
+title: Search
+permalink: /search/
+---
+
+<input type="search" id="search-page-input" class="form-control" placeholder="Search" aria-label="검색">
+<article id="search-page-results" class="page-content">
+	<p>검색결과가 없습니다.</p>
+</article>
+
+<!-- Script pointing to simple-jekyll-search.js -->
+<script type="text/javascript">
+	window.onload = function(){
+		let sjs = SimpleJekyllSearch({
+			searchInput: document.getElementById('search-page-input'),
+			resultsContainer: document.getElementById('search-page-results'),
+			json: '{{ "/search.json" | relative_url }}',
+			searchResultTemplate: `<div class="post-item">
+	<h3><a href="{url}">{title}</a></h3>
+	<small>
+		<i class="fas fa-calendar-days" aria-hidden="true"></i>
+		<time aria-description="{{ site.data.ui-text.label.updated }}">{date}</time>
+	</small>
+</div>`,
+			noResultsText: '<p>검색결과가 없습니다.</p>',
+			limit: 100, // 페이지에 렌더링되는 게시물 수를 제한
+			fuzzy: false,
+			exclude: ['Welcome']
+		});
+	}
+</script>

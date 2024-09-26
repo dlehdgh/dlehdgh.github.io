@@ -1,0 +1,35 @@
+{% comment -%}
+* 사용방법
+title, posts 변수를 사용해 목록을 출력함.
+include의 값으로 배열을 전달할 때 오류가 발생하는 문제로 아래와 같은 방식으로 사용함.
+
+e.g.
+{% assign title = 포스트 그룹의 제목 %}
+{% assign posts = 포스트 목록 배열 %}
+{% include postgroup.html %}
+{%- endcomment %}
+
+<article class="page-content">
+	<h3 id="{{ title | slugify }}">{{ title }}</h3>
+	{%- assign my_float = site.paginate | times: 1.0 -%}
+	{% assign total_page = posts | size | divided_by: my_float | ceil -%}
+	{% assign index = 1 -%}
+	{% assign count = 0 -%}
+	<div class="post-group" data-page="{{ index }}">
+	{% for post in posts -%}
+		{% include postlist.html post=post %}
+		{% assign count = count | plus: 1 -%}
+		{% if count == site.paginate and forloop.index < posts.size -%}
+			{% assign index = index | plus: 1 -%}
+			{% assign count = 0 -%}
+			</div>
+			<div class="post-group" data-page="{{ index }}">
+		{% endif -%}
+	{% endfor -%}
+	</div>
+	{% if total_page > 1 -%}
+		<button type="button" class="btn btn-primary btn-more" data-page="2" aria-label="{{ title }} {{ site.data.ui-text.label.more }}">
+			{{ site.data.ui-text.label.more }} <i aria-hidden="true">&rarr;</i>
+		</button>
+	{% endif -%}
+</article>

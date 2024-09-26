@@ -1,0 +1,19 @@
+---
+layout: default
+---
+
+{% include header.html meta=true %}
+
+<article class="page-content">
+	<style>
+		img, input[type="image"] {
+			width: 100px;
+		}
+	</style>
+	{%- if page.toc -%}
+		{% include toc.html html=content %}
+	{% endif -%}
+	{{ content | toc }}
+</article>
+
+{% include utterances.html %}

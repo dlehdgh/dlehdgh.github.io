@@ -1,0 +1,42 @@
+{%- assign names = site.data.ui-text.navbar -%}
+<!-- Skip Navigation -->
+<div class="navbar fixed-top visually-hidden-focusable z-max">
+	<div class="container-fluid">
+		<a href="#main" class="visually-hidden-focusable btn btn-skip">{{ site.data.ui-text.label.skip_content }}</a>
+		<a href="#sideNav" class="visually-hidden-focusable btn btn-skip">{{ site.data.ui-text.label.skip_navigation }}</a>
+	</div>
+</div>
+
+<!-- Navigation-->
+<nav id="sideNav" class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top" aria-label="매인 네비게이션">
+	<!-- Logo -->
+	<a href="{{ '/' | relative_url }}" class="navbar-brand d-block mb-lg-4">
+		<span class="d-none d-lg-block">
+			<img class="img-fluid img-profile rounded-circle mx-auto mb-2" src="{{ '/favicon.ico' | relative_url }}" alt="Logo">
+		</span>
+		<span class="h2">{{ site.title | escape }}</span>
+	</a>
+	<button type="button" class="navbar-toggler" data-bs-toggle="modal" data-bs-target="#search-modal" aria-label="{{ names.search }}">
+		<i class="fa fa-fw fa-search" aria-hidden="true"></i>
+	</button>
+	<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="{{ site.data.ui-text.label.navbar_toggler }}">
+		<i class="bi bi-three-dots-vertical" aria-hidden="true"></i>
+	</button>
+	<!-- Menu -->
+	<div class="collapse navbar-collapse" id="navbarResponsive">
+		<ul class="navbar-nav">
+			{% for navbar in site.data.navigation.navbar -%}
+				<li class="nav-item">
+					<a href="{{ navbar.url | relative_url }}" class="nav-link{% if page.url == navbar.url %} active" aria-current="page{% endif %}">
+						<i class="{{ navbar.icon }}" aria-hidden="true"></i> {{ names[navbar.name] }}
+					</a>
+				</li>
+			{% endfor -%}
+			<li class="nav-item d-none d-lg-block">
+				<button type="button" class="nav-link" data-bs-toggle="modal" data-bs-target="#search-modal">
+					<i class="fa fa-fw fa-search" aria-hidden="true"></i> {{ names.search }}
+				</button>
+			</li>
+		</ul>
+	</div>
+</nav>

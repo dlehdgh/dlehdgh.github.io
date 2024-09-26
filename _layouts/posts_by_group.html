@@ -1,0 +1,53 @@
+---
+layout: default
+---
+
+{%- comment -%}
+- group_by:
+  key: "tags"
+  icon: "fa-solid fa-tag"
+- group_by:
+  key: "categories"
+  icon: "fas fa-folder-open"
+- group_by:
+  key:
+    - "year" # %Y
+    - "month" # %m
+    - "day" # %d
+  icon: "fa-solid fa-calendar"
+{%- endcomment -%}
+
+{% include header.html meta=false %}
+
+{%- case page.group_by.key -%}
+	{%- when "categories" or "tags" -%}
+		{%- assign args = site[page.group_by.key] -%}
+		{% assign idx_title = 0 -%}
+		{% assign idx_items = 1 -%}
+	{% when "year" or "month" or "day" -%}
+		{%- if page.group_by.key == "year" -%}
+			{%- assign date_format = "%Y" -%}
+		{% else -%}
+			{%- assign date_format = page.group_by.key | split: "" | first | prepend: "%" -%}
+		{% endif -%}
+		{% assign args = site.posts | where_exp: "item", "item.hidden != true" | group_by_exp: 'post', 'post.date | date: date_format' -%}
+		{% assign idx_title = "name" -%}
+		{% assign idx_items = "items" -%}
+	{% else -%}
+		<script>console.log("Error: 'page.group_by.target' 변수의 값이 올바르지 않습니다.");</script>
+{% endcase -%}
+<ul class="nav-skip">
+	{%- for post in args -%}
+		{% capture skip_title -%}{{ post[idx_title] }}{% endcapture -%}
+		{% capture skip_size -%}{{ post[idx_items].size }}{% endcapture -%}
+		{% capture skip_icon -%}{{ page.group_by.icon }}{% endcapture %}
+		{% include skip_list.html title=skip_title size=skip_size fa=skip_icon %}
+	{% endfor -%}
+</ul>
+
+{%- for item in args -%}
+	{% comment %}{% assign title = item[idx_title] -%}{% endcomment %}
+	{% capture title -%}{{ item[idx_title] }}{% endcapture -%}
+	{% assign posts = item[idx_items] -%}
+	{% include postgroup.html title=title %}
+{% endfor -%}

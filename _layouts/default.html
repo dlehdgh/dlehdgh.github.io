@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	{% include head.html %}
+</head>
+<body>
+	{% include navbar.html %}
+
+	<main class="container-fluid p-0">
+		<h1 id="main" class="visually-hidden">본문 영역</h1>
+		<section class="resume-section">
+			<div class="resume-section-content">
+				{{ content }}
+			</div>
+		</section>
+	</main>
+
+	{% include footer.html %}
+
+	{% include scripts.html %}
+</body>
+</html>
