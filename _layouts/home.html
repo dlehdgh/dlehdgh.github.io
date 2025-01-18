@@ -13,7 +13,7 @@ layout: default
 
 <article class="page-content">
 	<h2>{{ site.data.ui-text.label.recent_posts }}</h2>
-	<p><strong class="text-primary">{{ site.posts | size | default: '0' }}</strong>{{ site.data.ui-text.label.total_posts }}</p>
+	<p>{{ site.data.ui-text.label.total_posts }}: <strong class="text-primary">{{ site.posts | size | default: '0' }}개</strong></p>
 	{% for post in site.posts limit: 5 -%}
 		{% include post_item.html post=post %}
 	{% endfor -%}
