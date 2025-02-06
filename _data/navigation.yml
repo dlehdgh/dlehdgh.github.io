@@ -1,0 +1,16 @@
+# main links
+main:
+  - title: "홈"
+    url: /
+  - title: "소개"
+    url: /about/
+  - title: "포스트"
+    url: /posts/
+   - title: "연도 아카이브"
+     url: /year-archive/
+  - title: "카테고리"
+    url: /categories/
+  - title: "태그"
+    url: /tags/
+  - title: "접근성 테스트"
+    url: /testing/
