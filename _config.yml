@@ -341,3 +341,4 @@ defaults:
 paginate_size: 5
 date_format: "%Y-%m-%d"
 date_time_format: "%Y-%m-%d %I:%M"
+excerpt_separator: <!--more--> # 포스트 목록에서 포스트 요약 부분 생략
