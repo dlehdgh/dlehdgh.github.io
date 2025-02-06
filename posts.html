@@ -1,9 +1,0 @@
----
-layout: page
-permalink: /posts/
----
-
-<p>{{ site.data.ui-text.label.total_posts }}: <strong class="text-primary">{{ site.posts | size | default: '0' }}개</strong></p>
-{% for post in site.posts -%}
-	{% include post_item.html post=post %}
-{% endfor %}
