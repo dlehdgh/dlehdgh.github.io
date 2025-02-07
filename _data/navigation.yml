@@ -1,11 +1,9 @@
 # main links
 main:
-  - title: "홈"
-    url: /
   - title: "소개"
     url: /about/
-  - title: "포스트"
-    url: /posts/
+  # - title: "포스트"
+  #   url: /posts/
   - title: "연도 아카이브"
     url: /year-archive/
   - title: "카테고리"
