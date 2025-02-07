@@ -6,7 +6,7 @@ ko: &DEFAULT_KO
   skip_content               : "본문 바로가기"
   skip_footer                : "푸터 바로가기"
   search_label               : "검색"
-  search_placeholder_text:   : "Search"
+  search_placeholder_text    : "Search"
   toc_label                  : "On This Page"
   less_than                  : "최대"
   minute_read                : "분 소요"
