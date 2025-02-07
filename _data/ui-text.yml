@@ -13,7 +13,7 @@ ko: &DEFAULT_KO
   undefined_wpm              : "_config.yml에 words_per_minute 매개 변수가 정의되지 않음"
   search_label_text          :
   search_algolia_no_results  :
-  recent_posts:              : "최근 포스트"
+  recent_posts               : "최근 포스트"
   # pagination_previous        : "이전 페이지"
   # pagination_next            : "다음 페이지"
 ko-KR:
