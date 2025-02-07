@@ -1,7 +1,7 @@
 ---
-layout: single-docs
 title: 표(table) - 복잡한 구조의 표(id, headers)
-category: testing
+excerpt: ""
+date: 2018-05-04 22:15
 ---
 
 ```html

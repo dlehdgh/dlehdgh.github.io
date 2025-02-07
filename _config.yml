@@ -339,6 +339,17 @@ defaults:
       comments: false
       share: true
       related: false
+# _testing
+  - scope:
+      path: ""
+      type: testing
+    values:
+      layout: single
+      author_profile: true
+      read_time: true
+      comments: true
+      share: false
+      related: false
 
 # Custom
 paginate_size: 5

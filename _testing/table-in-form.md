@@ -1,7 +1,7 @@
 ---
-layout: single-docs
 title: 표(table) - 표 안의 입력양식
-category: testing
+excerpt: ""
+date: 2023-11-29 18:34
 ---
 
 ```html

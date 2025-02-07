@@ -1,7 +1,7 @@
 ---
-layout: single-docs
 title: 폼(form) - 입력란과 빈 레이블
-category: testing
+excerpt: ""
+date: 2023-11-29 18:34
 ---
 
 ```html

@@ -1,7 +1,7 @@
 ---
-layout: single-docs
 title: 프레임
-category: testing
+excerpt: ""
+date: 2023-11-12 15:59
 ---
 
 **frameset.html**

@@ -1,7 +1,7 @@
 ---
-layout: single-docs
 title: 이미지와 longdesc 속성
-category: testing
+excerpt: ""
+date: 2023-11-29 18:34
 ---
 
 ```html

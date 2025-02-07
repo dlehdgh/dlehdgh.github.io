@@ -1,7 +1,7 @@
 ---
-layout: single-docs
 title: 폼(form) - 입력란(input)
-category: testing
+excerpt: ""
+date: 2018-05-05 15:08
 ---
 
 ```html

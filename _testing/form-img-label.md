@@ -1,7 +1,7 @@
 ---
-layout: single-docs
 title: 폼(form) - 이미지 레이블(Image Label)
-category: testing
+excerpt: ""
+date: 2023-11-29 18:34
 ---
 
 ```html

@@ -1,7 +1,7 @@
 ---
-layout: single-docs
 title: figure와 이미지
-category: testing
+excerpt: ""
+date: 2018-08-12 21:29
 ---
 
 ### figure와 이미지

@@ -1,7 +1,7 @@
 ---
-layout: single-docs
 title: 폼(form) - 입력란과 title 속성
-category: testing
+excerpt: ""
+date: 2019-08-11 15:38
 ---
 
 ```html
