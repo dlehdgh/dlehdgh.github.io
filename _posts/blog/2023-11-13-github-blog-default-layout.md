@@ -1,10 +1,8 @@
 ---
-layout: post
 title: "Github 블로그 - 7. 기본 레이아웃 구성"
+excerpt: ""
 categories: [blog]
 tags: [Github, Blog, Jekyll, 레이아웃]
-toc: true
-toc_sticky: true
 date: 2023-11-13 21:35
 ---
 
@@ -200,7 +198,7 @@ date_time_format: "%Y.%m.%d %I:%M"  # 년.월.일 시:분(ex: 2023.11.01 11:01)
 ```
 {: data-label="_config.yml"}
 
-날짜 형식에 대한 자세한 내용은 [STRFTIME](https://strftime.net/){:target="_blank"}를 참고하세요.
+날짜 형식에 대한 자세한 내용은 [STRFTIME](https://strftime.net/){:target="_blank"}를 참고하면 된다.
 
 `read_time.html`은 포스트를 읽는데 소모되는 시간을 출력해주는 파일이다. 자세한 내용에 대해서는 포스트를 따로 만들어 설명하겠다.
 

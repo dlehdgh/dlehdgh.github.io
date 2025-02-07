@@ -1,10 +1,8 @@
 ---
-layout: post
 title: "구글 크롬 항상 시크릿 모드로 실행하기"
+excerpt: ""
 categories: [computer]
 tags: [Google, Chrome, 시크릿 모드]
-toc: true
-toc_sticky: true
 date: 2024-02-06 16:07
 ---
 
@@ -12,7 +10,7 @@ date: 2024-02-06 16:07
 
 ### 크롬 시크릿 모드로 항상 열기
 
-우선 바탕화면에 크롬 바로가기 파일을 생성한 뒤 크롬 바로가기 파일에서 마우스 오른쪽을 누르거나 컨텍스트 메뉴 키를 눌러 속성으로 이동한다. 속성창에서 대상 편집창 끝에 **-incognito"**을 추가한 뒤 확인을 누르면 된다.
+우선 바탕화면에 크롬 바로가기 파일을 생성한 뒤 크롬 바로가기 파일에서 마우스 오른쪽을 누르거나 컨텍스트 메뉴 키를 눌러 속성으로 이동한다. 속성창에서 **대상** 편집창 끝에 **-incognito"**을 추가한 뒤 확인을 누르면 된다.
 
 ```
 "C:\Program Files\Google\Chrome\Application\chrome.exe" -incognito

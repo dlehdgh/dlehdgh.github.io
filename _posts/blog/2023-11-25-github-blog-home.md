@@ -1,6 +1,6 @@
 ---
-layout: post
 title: "Github 블로그 - 9. 홈화면 꾸미기"
+excerpt: ""
 categories: [blog]
 tags: [Github, Blog, Jekyll, Posts]
 toc: true

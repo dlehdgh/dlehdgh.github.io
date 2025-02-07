@@ -1,10 +1,8 @@
 ---
-layout: post
 title: "Github 블로그 - 10. 포스트 목록 만들기"
+excerpt: ""
 categories: [blog]
 tags: [Github, Blog, Jekyll, Posts]
-toc: true
-toc_sticky: true
 date: 2023-11-25 20:44
 ---
 

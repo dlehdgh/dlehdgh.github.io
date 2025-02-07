@@ -1,10 +1,8 @@
 ---
-layout: post
 title: "Github 블로그 - 3. 기본 설정"
+excerpt: ""
 categories: [blog]
 tags: [Github, Blog, Jekyll]
-toc: true
-toc_sticky: true
 date: 2023-11-04 15:03
 ---
 

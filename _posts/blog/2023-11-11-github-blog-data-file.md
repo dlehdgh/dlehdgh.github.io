@@ -1,10 +1,8 @@
 ---
-layout: post
 title: "Github 블로그 - 6. 데이터 파일 만들기"
+excerpt: ""
 categories: [blog]
 tags: [Github, Blog, Jekyll]
-toc: true
-toc_sticky: true
 date: 2023-11-11 19:04
 ---
 

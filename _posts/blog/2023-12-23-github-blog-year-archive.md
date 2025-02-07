@@ -1,10 +1,8 @@
 ---
-layout: post
 title: "Github 블로그 - 12. 연도 아카이브 만들기"
+excerpt: ""
 categories: [blog]
 tags: [Github, Blog, Jekyll, 연도 아카이브]
-toc: true
-toc_sticky: true
 date: 2023-12-23 20:21
 ---
 

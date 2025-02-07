@@ -1,10 +1,8 @@
 ---
-layout: post
 title: "wxPython 개발환경 구축"
+excerpt: ""
 categories: [python]
 tags: [파이썬, wxPython, 개발환경]
-toc: true
-toc_sticky: true
 date: 2024-10-24 20:53
 ---
 

@@ -1,10 +1,8 @@
 ---
-layout: post
 title: "Github 블로그 - 4. 변수와 머리말"
+excerpt: ""
 categories: [blog]
 tags: [Github, Blog, Jekyll]
-toc: true
-toc_sticky: true
 date: 2023-11-05 14:54
 ---
 

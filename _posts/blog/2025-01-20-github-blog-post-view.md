@@ -1,10 +1,8 @@
 ---
-layout: post
 title: "Github 블로그 - 14. 포스트 상세페이지 만들기"
+excerpt: ""
 categories: [blog]
 tags: [Github, Blog, Jekyll, Posts]
-toc: true
-toc_sticky: true
 date: 2025-01-20 18:12
 ---
 

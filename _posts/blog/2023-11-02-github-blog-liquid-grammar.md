@@ -1,10 +1,8 @@
 ---
-layout: post
 title: "Github 블로그 - 2. Liquid 문법"
+excerpt: ""
 categories: [blog]
 tags: [Github, Blog, Jekyll, Liquid]
-toc: true
-toc_sticky: true
 date: 2023-11-02 15:36
 ---
 

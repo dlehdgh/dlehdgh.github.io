@@ -1,10 +1,8 @@
 ---
-layout: post
 title: "Github 블로그 - 8. 페이지 만들기"
+excerpt: ""
 categories: [blog]
 tags: [Github, Blog, Jekyll, Pages]
-toc: true
-toc_sticky: true
 date: 2023-11-24 18:29
 ---
 

@@ -1,10 +1,8 @@
 ---
-layout: post
 title: "Github 블로그 - 11. 카테고리와 태그 목록 만들기"
+excerpt: ""
 categories: [blog]
 tags: [Github, Blog, Jekyll, Categories, Tags]
-toc: true
-toc_sticky: true
 date: 2023-11-29 09:30
 ---
 

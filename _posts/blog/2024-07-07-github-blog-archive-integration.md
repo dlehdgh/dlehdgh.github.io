@@ -1,14 +1,14 @@
 ---
-layout: post
 title: "Github 블로그 - 13. 아카이브 통합 레이아웃 만들기"
+excerpt: ""
 categories: [blog]
 tags: [Github, Blog, Jekyll, Categories, Tags, 연도 아카이브, 통합]
-toc: true
-toc_sticky: true
 date: 2024-07-07 11:39
 ---
 
 카테고리, 태그, 연도 아카이브의 코드를 비교해보면 내용만 다르지 레이아웃은 동일한 것을 알 수 있다. 그래서 하나의 레이아웃으로 만들 수 없을지 고민을 하다가 마크다운 파일의 **머리글**로 값을 전달 받아 그에 맞는 내용을 출력하는 방식으로 만들었다.
+
+### 마크다운 파일로 수정하기
 
 우선 기존에 만들었던 파일을 `md`파일로 수정한다.
 
@@ -44,6 +44,8 @@ group_by:
   icon: "fas fa-folder-open"
 ```
 {: data-label="Example"}
+
+### 레이아웃 만들기
 
 이제 레이아웃을 만들어 보자.
 
