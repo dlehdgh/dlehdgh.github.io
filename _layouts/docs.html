@@ -1,0 +1,33 @@
+---
+layout: archive
+---
+
+{{ content }}
+
+<h3 class="archive__subtitle">{{ page.title }}</h3>
+
+{% assign docs = site.pages | where_exp: "item", "item.category == page.docs" | sort: "title" -%}
+<div class="entries-list">
+	{% include documents-collection.html entries=docs type='list' %}
+</div>
+
+{% comment %}
+{% assign total_posts = docs | size -%}
+{% assign my_float = site.paginate | times: 1.0 -%}
+{% assign total_page = total_posts | divided_by: my_float | ceil -%}
+{% assign index = 1 -%}
+{% assign count = 0 -%}
+<p>{{ site.data.ui-text.label.total }} <strong class="text-primary">{{ total_posts | default: '0' }}</strong>{{ site.data.ui-text.label.posts }}</p>
+<div class="{{ page_class }}" data-page="{{ index }}">
+{% for post in docs -%}
+	{% include post_item.html post=post %}
+	{% assign count = count | plus: 1 -%}
+	{% if count == site.paginate and forloop.index < total_posts -%}
+		{% assign index = index | plus: 1 -%}
+		{% assign count = 0 -%}
+		</div>
+		<div class="post-group" data-page="{{ index }}">
+	{% endif -%}
+{%- endfor -%}
+</div>
+{% endcomment %}
