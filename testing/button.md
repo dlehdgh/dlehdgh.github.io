@@ -1,8 +1,15 @@
 ---
-layout: single-docs
+layout: single
 title: 폼(form) - 버튼과 이미지 버튼
+excerpt: ""
 category: testing
 date: 2018-04-29 22:17:10
+author_profile: true
+show_date: true
+read_time: true
+comments: true
+# share: false
+# related: false
 ---
 
 {%- assign img_apple = "/assets/image/apple.png" | relative_url -%}

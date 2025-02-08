@@ -1,7 +1,9 @@
 ---
 layout: single-docs
 title: 표(table) - 표 안의 문장과 목록
+excerpt: ""
 category: testing
+date: 2018-08-04 21:59
 ---
 
 ```html

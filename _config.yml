@@ -312,6 +312,12 @@ compress_html:
     envs: development
 
 
+# # Collections
+# collections:
+#   testing:
+#     output: true
+#     permalink: /:collection/:path/
+
 # Defaults
 defaults:
   # _posts
@@ -339,6 +345,17 @@ defaults:
       comments: false
       share: true
       related: false
+  # # _testing
+  # - scope:
+  #     path: ""
+  #     type: testing
+  #   values:
+  #     layout: single
+  #     author_profile: true
+  #     read_time: true
+  #     comments: true
+  #     share: false
+  #     related: false
 
 # Custom
 paginate_size: 5
