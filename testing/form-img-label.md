@@ -1,5 +1,4 @@
 ---
-layout: single-docs
 title: 폼(form) - 이미지 레이블(Image Label)
 excerpt: ""
 category: testing

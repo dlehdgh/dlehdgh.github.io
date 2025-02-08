@@ -1,5 +1,4 @@
 ---
-layout: single-docs
 title: figure와 표
 excerpt: ""
 category: testing

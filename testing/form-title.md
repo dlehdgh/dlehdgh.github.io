@@ -1,5 +1,4 @@
 ---
-layout: single-docs
 title: 폼(form) - 입력란과 title 속성
 excerpt: ""
 category: testing

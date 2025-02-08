@@ -1,5 +1,4 @@
 ---
-layout: single-docs
 title: 이미지와 longdesc 속성
 excerpt: ""
 category: testing

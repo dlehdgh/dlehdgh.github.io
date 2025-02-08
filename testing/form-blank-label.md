@@ -1,5 +1,4 @@
 ---
-layout: single-docs
 title: 폼(form) - 입력란과 빈 레이블
 excerpt: ""
 category: testing

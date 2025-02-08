@@ -1,5 +1,4 @@
 ---
-layout: single-docs
 title: 프레임
 excerpt: ""
 category: testing

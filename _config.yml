@@ -311,7 +311,6 @@ compress_html:
   ignore:
     envs: development
 
-
 # # Collections
 # collections:
 #   testing:

@@ -1,5 +1,4 @@
 ---
-layout: single-docs
 title: lang 속성
 excerpt: ""
 category: testing
