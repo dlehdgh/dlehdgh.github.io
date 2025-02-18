@@ -1,0 +1,80 @@
+---
+# Only the main Sass file needs front matter (the dashes are enough)
+---
+
+@charset "utf-8";
+
+@import "minimal-mistakes/skins/{{ site.minimal_mistakes_skin | default: 'default' }}"; // skin
+@import "minimal-mistakes"; // main partials
+
+/*
+인라인 코드 블럭 색상 강조
+공유 기능 추가...
+포스트 상세페이지에서 이전글, 다음글 버튼이 너무 크고 예쁘지 않아 `_includes/post_pagination.html` 파일 커스텀 필요
+*/
+
+a {
+	text-decoration: none;
+}
+blockquote {
+	margin-left: 0;
+}
+pre {
+	tab-size: 4;
+}
+
+// 홈화면
+.entries-list > .list__item > article.archive__item > .archive__item-title {
+	margin-top: 0;
+}
+
+/* // 연도 아카이브, 카테고리, 테그
+.taxonomy__index a {
+	background-color: $primary-color;
+	color: #fff;
+	
+	& .taxonomy__count {
+		background: #000;
+	}
+} */
+
+// 포스트 목록에서 포스트의 날짜 정보가 작음
+.archive__item > .page__meta {
+	font-size: 1em;
+}
+
+// 검색 결과에서 포스트 요약 정보 숨기기(다른 곳은 margin-bottom이 없어져 이상하게 보임)
+#results > .list__item > .archive__item {
+	margin-bottom: 1em;
+
+	.archive__item-excerpt {
+		display: none;
+	}
+}
+
+// 목차
+// .toc {
+// 	border: 1px solid $primary-color;
+// }
+
+// 인라인 코드 블럭
+code.highlighter-rouge {
+	color: #f8f8f2;
+	background-color: #272822;
+}
+
+// 저작권 정보
+.page__ccl {
+	position: relative;
+	float: inline-start;
+	margin-inline: 0;
+	width: 100%;
+	clear: both;
+	margin-top: 2em;
+	margin-bottom: 0.5em;
+	padding-bottom: 1.5em;
+	border-bottom: 1px solid #cecfd1;
+	p {
+		margin-bottom: 1em;
+	}
+}

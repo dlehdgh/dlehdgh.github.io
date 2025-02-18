@@ -97,7 +97,7 @@ facebook:
   username               :
   app_id                 :
   publisher              :
-og_image                 : "/assets/image/favicon.ico" # Open Graph/Twitter default site image
+og_image                 : # Open Graph/Twitter default site image
 # For specifying social profiles
 # - https://developers.google.com/structured-data/customize/social-profiles
 social:
@@ -116,7 +116,7 @@ analytics:
 # Site Author
 author:
   name             : "dlehdgh"
-  avatar           : # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
+  avatar           : "/assets/image/favicon.ico" # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
   bio              : "취미로 코딩하는 개발자"
   location         : "South Korea"
   email            : "dlehdgh2@naver.com"
@@ -360,3 +360,6 @@ defaults:
 paginate_size: 5
 date_format: "%Y-%m-%d"
 date_time_format: "%Y-%m-%d %I:%M"
+footer_scripts:
+  /assets/js/main.min.js
+  /assets/js/custom.js
