@@ -1,4 +1,4 @@
-$(function(){
+$(document).ready(function () {
 	codeblock_label()
 	/* // 저작권 정보 출력하기
 	$.get("{{ '/_includes/creative-commons.html' | relative_url }}", function(data){
@@ -6,7 +6,7 @@ $(function(){
 	}).fail(function(){
 		console.error('Error loading creative-commons.html');
 	}); */
-})();
+});
 
 const codeblock_label = () => {
 	/**
