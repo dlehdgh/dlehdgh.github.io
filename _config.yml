@@ -361,5 +361,5 @@ paginate_size: 5
 date_format: "%Y-%m-%d"
 date_time_format: "%Y-%m-%d %I:%M"
 footer_scripts:
-  - /assets/js/main.min.js'
+  - /assets/js/main.min.js
   - /assets/js/custom.js
