@@ -28,6 +28,25 @@ pre {
 	margin-top: 0;
 }
 
+// 사이드바 카테고리 목록
+.sidebar .nav__list > ul > li {
+	& a {
+		display: block;
+		padding: 0.25rem
+	}
+	& a:hover, & a:focus {
+		background-color: $warning-color;
+	}
+	& .nav__sub-title::before {
+		content: "📁";
+		padding-right: 4px;
+	}
+	& ul > li > a::before {
+		content: "📁";
+		padding-right: 4px;
+	}
+}
+
 /* // 연도 아카이브, 카테고리, 테그
 .taxonomy__index a {
 	background-color: $primary-color;
@@ -40,7 +59,7 @@ pre {
 
 // 포스트 목록에서 포스트의 날짜 정보가 작음
 .archive__item > .page__meta {
-	font-size: 1em;
+	font-size: 0.75em;
 }
 
 // 검색 결과에서 포스트 요약 정보 숨기기(다른 곳은 margin-bottom이 없어져 이상하게 보임)
@@ -52,30 +71,42 @@ pre {
 	}
 }
 
+// single layout 헤더
+.page__header {
+	border-bottom: 1px solid $gray;
+	float: inline-start;
+}
+
 // 목차
 // .toc {
 // 	border: 1px solid $primary-color;
 // }
 
-// 인라인 코드 블럭
-code.highlighter-rouge {
-	color: #f8f8f2;
-	background-color: #272822 !important;
-}
+.page__content {
+	aside + p {
+		margin-top: 2em;
+	}
 
-// 코드 라벨
-.codeblock-label {
-	background-color: $light-gray;
-	color: $darker-gray;
-	display: inline-block;
-	padding: 0.25rem 0.5rem;
-	margin-bottom: 0 !important;
-	border-radius: $border-radius;
-	border-bottom-left-radius: 0;
-	border-bottom-right-radius: 0;
+	// 인라인 코드 블럭
+	code.highlighter-rouge {
+		color: #f8f8f2;
+		background-color: #272822 !important;
+	}
 
-	& + .highlighter-rouge {
-		border-top-left-radius:  0;
+	// 코드 라벨
+	.codeblock-label {
+		background-color: $light-gray;
+		color: $darker-gray;
+		display: inline-block;
+		padding: 0.25rem 0.5rem;
+		margin-bottom: 0 !important;
+		border-radius: $border-radius;
+		border-bottom-left-radius: 0;
+		border-bottom-right-radius: 0;
+
+		& + .highlighter-rouge {
+			border-top-left-radius:  0;
+		}
 	}
 }
 
