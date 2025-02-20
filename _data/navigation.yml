@@ -12,3 +12,22 @@ main:
     url: /tags/
   # - title: "접근성 테스트"
   #   url: /testing/
+
+# sidebar navigation list
+sidebar-category:
+  - title: "Programming"
+    children:
+      - title: "블로그"
+        url: "/blog/"
+      - title: "Python"
+        url: "/python/"
+      - title: "Javascript"
+        url: /javascript/
+      - title: "SCSS"
+        url: /scss/
+  - title: "IT"
+    children:
+      - title: "PC"
+        url: /pc/
+      - title: "안드로이드"
+        url: /android/
