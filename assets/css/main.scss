@@ -62,6 +62,12 @@ pre {
 	font-size: 0.75em;
 }
 
+// 페이지 번호 목록 여백 설정
+.pagination {
+	margin-top: 0 !important;
+	padding-top: 0 !important;
+}
+
 // 검색 결과에서 포스트 요약 정보 숨기기(다른 곳은 margin-bottom이 없어져 이상하게 보임)
 #results > .list__item > .archive__item {
 	margin-bottom: 1em;
