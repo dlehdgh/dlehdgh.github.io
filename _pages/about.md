@@ -1,8 +1,9 @@
 ---
-permalink: /about/
 title: 소개
+permalink: /about/
 excerpt: ""
-toc: true
+toc: false
+last_modified_at: 2025-02-22 21:56
 ---
 
 여러분, 안녕하세요!
