@@ -4,99 +4,124 @@
 
 @charset "utf-8";
 
+$doc-font-size: 16px !default;
+
 @import "minimal-mistakes/skins/{{ site.minimal_mistakes_skin | default: 'default' }}"; // skin
 @import "minimal-mistakes"; // main partials
 
-/*
-인라인 코드 블럭 색상 강조
-공유 기능 추가...
-포스트 상세페이지에서 이전글, 다음글 버튼이 너무 크고 예쁘지 않아 `_includes/post_pagination.html` 파일 커스텀 필요
-*/
-
 a {
-	text-decoration: none;
+	text-decoration: none !important;
+
+	&:hover,
+	&:focus,
+	&:active {
+		text-decoration: none !important;
+	}
 }
 blockquote {
 	margin-left: 0;
+	font-style: normal;
 }
 pre {
 	tab-size: 4;
 }
 
-// 홈화면
-.entries-list > .list__item > article.archive__item > .archive__item-title {
-	margin-top: 0;
-}
-
 // 사이드바 카테고리 목록
 .sidebar .nav__list > ul > li {
-	& a {
+	$nav-padding-inline: 0.5rem;
+	$nav-active-color: #007bff;
+	a {
 		display: block;
-		padding: 0.25rem
+		padding: 0.25rem $nav-padding-inline;
+
+		&:hover, a:focus {
+			color: #fff;
+			background-color: $nav-active-color;
+		}
+		&.active {
+			margin-inline-start: 0;
+			padding-inline: $nav-padding-inline;
+		}
 	}
-	& a:hover, & a:focus {
-		background-color: $warning-color;
-	}
-	& .nav__sub-title::before {
+	.nav__sub-title::before {
 		content: "📁";
 		padding-right: 4px;
 	}
-	& ul > li > a::before {
-		content: "📁";
+	ul > li > a::before {
+		content: "📂";
 		padding-right: 4px;
 	}
 }
 
-/* // 연도 아카이브, 카테고리, 테그
-.taxonomy__index a {
-	background-color: $primary-color;
-	color: #fff;
-	
-	& .taxonomy__count {
-		background: #000;
+.entries-list {
+	// 홈화면의 포스트 목록
+	.list__item > article.archive__item > .archive__item-title {
+		margin-top: 1em !important;
 	}
-} */
-
-// 포스트 목록에서 포스트의 날짜 정보가 작음
-.archive__item > .page__meta {
-	font-size: 0.75em;
-}
-
-// 페이지 번호 목록 여백 설정
-.pagination {
-	margin-top: 0 !important;
-	padding-top: 0 !important;
-}
-
-// 검색 결과에서 포스트 요약 정보 숨기기(다른 곳은 margin-bottom이 없어져 이상하게 보임)
-#results > .list__item > .archive__item {
-	margin-bottom: 1em;
-
-	.archive__item-excerpt {
-		display: none;
+	// 페이지 번호 네비게이션 여백 설정
+	+ .pagination {
+		margin-top: 0 !important;
+		// padding-top: 0 !important;
+	}
+	// 카테그리 목록에서 제목과 여백 지정
+	.archive > h1#page-title + & {
+		margin-top: 2em;
 	}
 }
 
-// single layout 헤더
+.archive__item {
+	// 포스트 목록에서 포스트의 날짜 정보가 작음
+	> .page__meta {
+		font-size: 0.75em;
+	}
+	// 검색 결과에서 포스트 요약 정보 숨기기(다른 곳은 margin-bottom이 없어져 이상하게 보임)
+	#results > .list__item > & {
+		margin-bottom: 1em;
+
+		&-excerpt {
+			display: none;
+		}
+	}
+}
+
+// single layout의 헤더에 테두리와 여백 지정
 .page__header {
 	border-bottom: 1px solid $gray;
 	float: inline-start;
+	width: 100%;
+	margin-bottom: 2em;
 }
 
-// 목차
-// .toc {
-// 	border: 1px solid $primary-color;
-// }
-
 .page__content {
-	aside + p {
-		margin-top: 2em;
+	// 콘텐츠가 제목 태그로 시작하면 margin이 중복되는 문제로 margin-top을 0으로 설정
+	aside + * {
+		margin-top: 0;
+	}
+
+	// 링크 색상 지정
+	aside a {
+		color: inherit;
+	}
+	a {
+		color: $behance-color;
+	}
+
+	// 해딩 태그, 코드 블럭의 여백을 p 태그와 같게 설정
+	$mb: 1.3em;
+	@for $i from 1 through 6 {
+		h#{$i} {
+			margin-bottom:  $mb;
+		}
+	}
+	div.highlighter-rouge, figure.highlight {
+		margin-bottom: $mb * 1.2;
 	}
 
 	// 인라인 코드 블럭
 	code.highlighter-rouge {
-		color: #f8f8f2;
-		background-color: #272822 !important;
+		// color: #f8f8f2
+		// background-color: #272822 !important;
+		color: #0d6efd;
 	}
 
 	// 코드 라벨
@@ -106,12 +131,27 @@ pre {
 		display: inline-block;
 		padding: 0.25rem 0.5rem;
 		margin-bottom: 0 !important;
-		border-radius: $border-radius;
-		border-bottom-left-radius: 0;
-		border-bottom-right-radius: 0;
+		border: {
+			radius: $border-radius;
+			bottom-left-radius: 0;
+			bottom-right-radius: 0;
+		}
 
-		& + .highlighter-rouge {
+		+ .highlighter-rouge {
 			border-top-left-radius:  0;
+		}
+	}
+
+	// .notice 글자크기 변경
+	.notice {
+		font-size: 1em !important;
+
+		&--primary,
+		&--info,
+		&--warning,
+		&--danger,
+		&--success {
+			font-size: 1em !important;
 		}
 	}
 }
@@ -120,13 +160,16 @@ pre {
 .page__ccl {
 	position: relative;
 	float: inline-start;
-	margin-inline: 0;
 	width: 100%;
 	clear: both;
-	margin-top: 2em;
-	margin-bottom: 0.5em;
 	padding-bottom: 1.5em;
+	margin: {
+		inline: 0;
+		top: 2em;
+		bottom: 0.5em;
+	}
 	border-bottom: 1px solid #cecfd1;
+
 	p {
 		margin-bottom: 1em;
 	}

@@ -1,11 +1,5 @@
 $(document).ready(function () {
 	codeblock_label()
-	/* // 저작권 정보 출력하기
-	$.get("{{ '/_includes/creative-commons.html' | relative_url }}", function(data){
-		$('#main > .page > .page__inner-wrap > .page__meta').before(data);
-	}).fail(function(){
-		console.error('Error loading creative-commons.html');
-	}); */
 });
 
 const codeblock_label = () => {
