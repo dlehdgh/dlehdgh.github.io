@@ -116,7 +116,7 @@ analytics:
 # Site Author
 author:
   name             : "dlehdgh"
-  avatar           : "/assets/image/favicon.ico" # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
+  avatar           : # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
   bio              : "취미로 코딩하는 개발자"
   location         : "South Korea"
   email            : "dlehdgh2@naver.com"
@@ -333,6 +333,9 @@ defaults:
       related: true
       toc: true
       toc_sticky: true
+      creative_commons: true
+      sidebar:
+        nav: "sidebar-category"
   # _pages
   - scope:
       path: ""
@@ -342,7 +345,7 @@ defaults:
       author_profile: true
       read_time: false
       comments: false
-      share: true
+      share: false
       related: false
       sidebar:
         nav: "sidebar-category"
