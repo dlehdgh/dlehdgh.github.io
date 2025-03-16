@@ -2,15 +2,23 @@
 title: "Github 블로그 - 13. 아카이브 통합 레이아웃 만들기"
 excerpt: ""
 categories: [blog]
-tags: [Github, Blog, Jekyll, Categories, Tags, 연도 아카이브, 통합]
+tags:
+  - Github
+  - Blog
+  - Jekyll
+  - Categories
+  - Tags
+  - 연도 아카이브
+  - 통합
 date: 2024-07-07 11:39
+last_modified_at: 2025-03-07 16:34
 ---
 
 카테고리, 태그, 연도 아카이브의 코드를 비교해보면 내용만 다르지 레이아웃은 동일한 것을 알 수 있다. 그래서 하나의 레이아웃으로 만들 수 없을지 고민을 하다가 마크다운 파일의 **머리글**로 값을 전달 받아 그에 맞는 내용을 출력하는 방식으로 만들었다.
 
-### 마크다운 파일로 수정하기
+## 마크다운 파일로 수정하기
 
-우선 기존에 만들었던 파일을 `md`파일로 수정한다.
+우선 기존에 만들었던 파일을 `.md` 파일로 수정한다.
 
 ```bash
 ┌─ categories
@@ -45,7 +53,7 @@ group_by:
 ```
 {: data-label="Example"}
 
-### 레이아웃 만들기
+## 레이아웃 만들기
 
 이제 레이아웃을 만들어 보자.
 
@@ -91,6 +99,10 @@ layout: default
 {: data-label="_layout/posts_by_group.html"}
 {% endraw %}
 
-위 코드를 설명하자면 **머리글**에 입력한 `key` 값에 따라 `site` 변수에서 원하는 포스트 목록을 가져오는 방식이다. 그리고 `include` 파일로 `post[idx_title]`를 전달해주면 오류가 발생한다. 이를 해결하기 위해 `capture` 구문을 사용해 변수를 선언하는 것이다.
+위 코드를 설명하자면 **머리글**에 입력한 `key` 값에 따라 `site` 변수에서 원하는 포스트 목록을 가져오는 방식이다. 그리고 `include` 구문에서 `post[idx_title]` 변수를 전달해주면 오류가 발생한다. 이를 해결하기 위해 `capture` 구문을 사용해 변수를 선언하는 것이다.
 
 > 설명을 하잖니 뭐라고 글을 적어야 할지 어렵네요. 이전 포스트의 카테고리, 태그, 연도 아카이브의 포스트를 참고하세요.
+{: .notice--warning}
+
+> 지금 와서 보니 `icon` 클레스를 머리글로 전달받는 것이 아니라 `posts_by_group.html` 파일에서 아이콘을 설정해주었으면 더 좋지 않았을까 싶네요.
+{: .notice--warning}

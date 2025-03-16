@@ -2,11 +2,15 @@
 title: "Github 블로그 - 3. 기본 설정"
 excerpt: ""
 categories: [blog]
-tags: [Github, Blog, Jekyll]
+tags:
+  - Github
+  - Blog
+  - Jekyll
+  - _config.yml
 date: 2023-11-04 15:03
 ---
 
-### Jekyll 폴더 구조 이해하기
+## Jekyll 폴더 구조 이해하기
 
 처음 Jekyll을 생성하면 여러 폴더가 자동으로 생성되어 있을 것이다. 생성되어 있지 않은 폴더도 있겠지만 직접 폴더를 만들어 사용하면 된다.
 
@@ -15,29 +19,30 @@ date: 2023-11-04 15:03
 * `_layouts` : 레이아웃을 구성하는 파일들이 있는 폴더이다.
 * `_plugins` : 플러그인이 되는 Ruby 파일이 있는 폴더이다.
 * `_posts` : 블로그에 게시되는 포스트들이 있는 폴더이다.
+* `_drafts` : 초안이다. 즉 아직 게시하지 않은 포스트를 말한다. 파일명 형식에 날짜가 없다.
 * `_site` : Jekyll을 실행하면 자동으로 폴더와 파일이 생성되는데 브라우저에 출력될 파일들이 있는 폴더이다.
 * `_sass` : SCSS를 사용하기 위한 폴더로 사이트의 스타일을 설정한다.
-* `_drafts` : 초안이다. 즉 아직 게시하지 않은 포스트를 말한다. 파일명 형식에 날짜가 없다.
 * `assets` : 사이트의 자료들이 있는 폴더이다.
 
 > 나는 SASS를 사용하지 않았기 때문에 `_sass` 폴더는 생성하지 않고 `assets` 폴더에 CSS 파일을 만들어 사용했다.
+>
+> 내가 만든 기본 디렉토리 구조는 다음과 같다.
+>
+> ```bash
+> .
+> ┌─ _data
+> ├─ _includes
+> ├─ _layouts
+> ├─ _plugins
+> ├─ _posts
+> ├─ assets
+> ├─ _config.yml
+> └─ index.html
+> ...
+> ```
+{: .notice--primary}
 
-내가 만든 기본 디렉토리 구조는 다음과 같다.
-
-```bash
-.
-┌─ _data
-├─ _includes
-├─ _layouts
-├─ _plugins
-├─ _posts
-├─ assets
-├─ _config.yml
-└─ index.html
-...
-```
-
-### _config.yml 설정하기
+## _config.yml 설정하기
 
 `_config.yml`은 우리가 만들 사이트에 대한 기본 설정이 담긴 파일이라고 할 수 있다. 기본적으로 생성되는 파일에 간단한 설명이 주석으로 달려있으나 각 항목에 대해 설명하겠다.
 

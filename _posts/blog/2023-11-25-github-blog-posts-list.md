@@ -2,13 +2,19 @@
 title: "Github 블로그 - 10. 포스트 목록 만들기"
 excerpt: ""
 categories: [blog]
-tags: [Github, Blog, Jekyll, Posts]
+tags:
+  - Github
+  - Blog
+  - Jekyll
+  - Posts
+  - Paginate
 date: 2023-11-25 20:44
+last_modified_at: 2025-03-01 09:55
 ---
 
 먼저 포스트 목록을 만드는 기본적인 방법을 설명하겠다.
 
-### 포스트 목록
+## 포스트 목록
 
 {% raw %}
 ```liquid
@@ -25,7 +31,7 @@ date: 2023-11-25 20:44
 
 위 코드를 실행해 보면 `_posts` 폴더에 있는 모든 포스트 목록이 출력될 것이다. 그런데 이 방법으로 하게 될 경우 우리가 포스트를 1000개 이상 작성했다고 가정할 때 페이지에 출력할 콘텐츠가 많아지면서 로딩 속도가 느려지게 되는 문제가 발생할 것이다. 이러한 문제를 해결하기 위해 Jekyll에서는 **페이지 나누기** 기능을 제공한다.
 
-### 페이지 나누기
+## 페이지 나누기
 
 포스트에 페이지 나누기 기능을 사용하려면 한 페이지에 보여 줄 항목 개수에 대한 설정을 `_config.yml` 파일에 추가해야 한다.
 
@@ -52,11 +58,13 @@ paginate_path: "/posts/page:num/"
 ...
 ```
 
-> **Note**   
-> 페이지 머리말에 고유주소(permalink)를 설정하면 페이지 나누기가 작동하지 않는다.
+> **Note**  
+> 페이지 머리말에 **고유주소(permalink)**를 설정하면 페이지 나누기가 작동하지 않는다.
+{: .notice--primary}
 
-> **Warning**   
-> 페이지 나누기는 카테고리, 태그 등의 포스트 목록에 대해서는 지원하지 않는다. 최신 버전의 [jekyll-paginate-v2](https://github.com/sverrirs/jekyll-paginate-v2){:target="blank"} 플러그인은 카테고리, 태그 등 더 많은 페이지에서 페이지 나누기 기능을 사용할 수 있다. 하지만 GitHub Pages에서 이 플러그인을 지원하지 않는다.
+> **Warning**  
+> 페이지 나누기는 카테고리, 태그 등의 포스트 목록에 대해서는 지원하지 않는다. 최신 버전의 [jekyll-paginate-v2](https://github.com/sverrirs/jekyll-paginate-v2){:target="blank"} 플러그인에서는 카테고리, 태그 등 더 많은 페이지에서 페이지 나누기 기능을 사용할 수 있다. 하지만 **GitHub Pages**에서 이 플러그인을 지원하지 않는다.
+{: .notice--primary}
 
 |변수|설명|
 |----|------|
@@ -107,7 +115,7 @@ title: My Posts
 ```
 {% endraw %}
 
-### 포스트 목록 만들기
+## 포스트 목록 만들기
 
 포스트의 페이징 처리는 일반적인 게시판에서 많이 사용되는 페이지 번호를 나열하는 방식으로 구현할 것이다. 일반적인 페이징 처리에서는 한 화면에 지정된 개수 만큼의 페이지 번호를 보여주므로 `_config.yml` 파일에 `paginate_size`를 추가해 몇 개의 페이지 번호를 보여 줄 것인지 설정한다.
 

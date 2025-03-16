@@ -2,11 +2,16 @@
 title: "Github 블로그 - 7. 기본 레이아웃 구성"
 excerpt: ""
 categories: [blog]
-tags: [Github, Blog, Jekyll, 레이아웃]
+tags:
+  - Github
+  - Blog
+  - Jekyll
+  - 레이아웃
 date: 2023-11-13 21:35
+last_modified_at: 2025-02-25 18:10
 ---
 
-### 레이아웃이란?
+## 레이아웃이란?
 
 레이아웃은 컨텐츠를 포장하는 템플릿이다. 템플릿을 위한 코드를 한 곳에 보관할 수 있게 해주기 때문에 모든 페이지에 네비게이션이나 푸터를 반복해서 입력할 필요가 없다.
 
@@ -14,7 +19,7 @@ date: 2023-11-13 21:35
 
 레이아웃 파일에서 `content`라는 변수를 사용하는데 그 값은 레이아웃을 사용하는 페이지나 포스트의 콘텐츠가 들어가게 된다.
 
-### 기본 레이아웃 구성
+## 기본 레이아웃 구성
 
 나는 **Start Bootstrap - Resume** 테마를 적용하기 위해 필요한 CSS 파일을 추가하고, 테마의 Navigation과 About의 코드를 가져와 사용했다.
 
@@ -91,7 +96,7 @@ date: 2023-11-13 21:35
 {: data-label="_includes/scripts.html"}
 {% endraw %}
 
-#### 네비게이션 만들기
+### 네비게이션 만들기
 
 {% raw %}
 ```liquid
@@ -119,12 +124,9 @@ date: 2023-11-13 21:35
 	<!-- Menu -->
 	<div class="collapse navbar-collapse" id="navbarResponsive">
 		<ul class="navbar-nav">
-			<!-- <li class="nav-item">
-				<a href="{{ '/' | relative_url }}" class="nav-link js-scroll-trigger{% if page.url == '/' %} active" aria-current="page{% endif %}">{{ names.home }}</a>
-			</li> -->
 			{% for navbar in site.data.navigation.navbar -%}
 				<li class="nav-item">
-					<a href="{{ navbar.url | relative_url }}" class="nav-link js-scroll-trigger{% if page.url == navbar.url %} active" aria-current="page{% endif %}">
+					<a href="{{ navbar.url | relative_url }}" class="nav-link {% if page.url == navbar.url %} active" aria-current="page{% endif %}">
 						<i class="{{ navbar.icon }}" aria-hidden="true"></i> {{ names[navbar.name] }}
 					</a>
 				</li>
@@ -143,11 +145,12 @@ date: 2023-11-13 21:35
 
 마지막의 검색 링크는 나중에 검색 기능을 구현하는 과정에서 자세히 다루겠다.
 
-#### 헤더 영역 만들기
+### 헤더 영역 만들기
 
 하위 페이지의 제목을 표시하거나  포스트의 제목, 작성자, 작성일 등의 정보를 표시할 것이다.
 
-> 내가 `header.html` 파일로 분리한 것은 매번 페이지 제목 또는 포스트 제목을 출력하기 위해 거의 동일한 코드를 적어야 하는 불편이 있어 만들게 되었다.
+> 내가 `header.html` 파일로 분리한 것은 매번 페이지 제목 또는 포스트 제목을 출력할 때마다 거의 동일한 코드를 반복적으로 작성하는 불편이 있어 만들게 되었다.
+{: .notice--warning}
 
 {% raw %}
 ```liquid
@@ -193,16 +196,16 @@ date: 2023-11-13 21:35
 `include.date | date: include.date_format`는 페이지의 날짜를 지정한 형식으로 바꾸는 구문이다. `_config.yml` 파일에 다음과 같이 입력해 사용하면 된다.
 
 ```yaml
-date_format: "%Y.%m.%d" # 년.월.일(ex: 2023.11.01)
-date_time_format: "%Y.%m.%d %I:%M"  # 년.월.일 시:분(ex: 2023.11.01 11:01)
+date_format: "%Y-%m-%d" # 년-월-일(ex: 2023-11-01)
+date_time_format: "%Y-%m-%d %I:%M" # 년-월-일 시:분(ex: 2023-11-01 11:01)
 ```
 {: data-label="_config.yml"}
 
-날짜 형식에 대한 자세한 내용은 [STRFTIME](https://strftime.net/){:target="_blank"}를 참고하면 된다.
+날짜 형식에 대한 자세한 내용은 [STRFTIME](https://strftime.net/){: target="_blank"}를 참고하면 된다.
 
 `read_time.html`은 포스트를 읽는데 소모되는 시간을 출력해주는 파일이다. 자세한 내용에 대해서는 포스트를 따로 만들어 설명하겠다.
 
-#### 푸터 영역 만들기
+### 푸터 영역 만들기
 
 {% raw %}
 ```liquid
@@ -246,7 +249,7 @@ date_time_format: "%Y.%m.%d %I:%M"  # 년.월.일 시:분(ex: 2023.11.01 11:01)
 
 RSS의 `feed.xml` 파일은 기본 플러그인으로 제공되는 `jekyll-feed` 플러그인으로 자동 생성되는 파일이다. Jekyll을 로컬 환경 또는 클라우드 통합 개발 환경(IDE)를 통해 개발하는 경우 `_site` 폴더에 `feed.xml` 파일이 있는 것을 확인할 수 있다.
 
-### 페이지 레이아웃 구성
+## 페이지 레이아웃 구성
 
 {% raw %}
 ```liquid
@@ -263,7 +266,7 @@ layout: default
 
 페이지는 간단하다. 페이지 제목은 `default.html`에서 출력해주므로 본문 콘텐츠만 출력해주면 된다.
 
-### 레이아웃 파일 구조
+## 레이아웃 파일 구조
 
 내가 만들 레이아웃 파일의 목록은 다음과 같다.
 
@@ -281,3 +284,4 @@ layout: default
 
 > `home.html`, `post.html`, `category.html`, `posts_by_group.html`는 포스트와 카테고리를 만드는 과정에서 만들 것이다.
 > `docs.html`, `single-docs.html`는 접근성 테스트 메뉴를 만드는 과정에서 자세히 설명하겠다.
+{: .notice--warning}

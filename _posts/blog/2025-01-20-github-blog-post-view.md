@@ -1,14 +1,22 @@
 ---
-title: "Github 블로그 - 14. 포스트 상세페이지 만들기"
+title: "Github 블로그 - 14. 포스트 내용 보여주기"
 excerpt: ""
 categories: [blog]
-tags: [Github, Blog, Jekyll, Posts]
+tags:
+  - Github
+  - Blog
+  - Jekyll
+  - Post
+  - 목차
+  - SNS 공유
+  - Utterances
 date: 2025-01-20 18:12
+last_modified_at: 2025-03-08 13:48
 ---
 
 이제 포스트의 내용을 보여 줄 레이아웃을 만들 것이다.
 
-### 포스트 콘텐츠
+## 포스트 콘텐츠 출력하기
 
 포스트의 콘텐츠를 출력하는 것은 간단하다. `content` 변수를 출력해 주기만 하면 된다.
 
@@ -28,15 +36,16 @@ layout: default
 
 > **Note**   
 > 본문 콘텐츠가 되는 요소에는 `page-content` 클레스를 사용해 동일한 스타일을 적용할 것이다.
+{: .notice--primary}
 
-### 목차 만들기
+## 목차 만들기
 
-페이지의 목차를 만드는 과정은 조금 복잡한데 본문에 출력할 `content`를 가져와 **해딩 태그**를 찾아서 나열해 주는 방식이다.
+페이지의 목차를 만드는 과정은 조금 복잡한데 본문에 출력할 `content` 변수를 가져와 **해딩 태그**를 찾아서 나열해 주는 방식이다.
 
-* `content`를 `<h`로 나누어 제목 태그를 구분한다.
+* `content`를 `<h`로 나누어 준다.
 * 나눠진 항목의 첫번째 자리의 글자가 1 ~ 6인지 체크해 해딩 태그인지 구분한다.
 * id, class, 텍스트를 추출한다.
-* class 속성 값에 `no_toc` 클레스가 있는 제목 태그는 제외한다.
+* class 속성 값에 `no_toc` 클레스가 있는 해딩 태그는 제외한다.
 
 먼저 포스트의 콘텐츠를 출력하는 부분을 아래와 같이 수정한다.
 
@@ -113,19 +122,23 @@ layout: default
 
 ```
 1 id="logo" class="page-title">로고</h1> ...
-2 id="about">Ablut</h2> ...
+2 id="about">About</h2> ...
 ...
 ```
 
 그리고 배열로 나누어진 항목의 첫 글자를 가져와 1 ~ 6에 해당하는지 체크해서 제목 태그만을 추출한다.
 
-`</h`로 나누면 첫 번째 항목에 태그의 속성과 텍스트가 있게 되므로 `id="`로 나눈 뒤 `"`로 나누어 id를 추출하고
-클레스도 동일한 방식으로 추출한다. 마지막으로 텍스트는 id를 추출하기 위해 나눈 항목 중 두번째 항목을 가져와 `>`로 나누면 텍스트가 추출되게 된다.
+`</h`로 나누면 첫 번째 항목에 태그의 속성과 텍스트가 있게 되므로 `id="`로 나눈 뒤 `"`로 나누어 id 속성 값을 추출하고 클레스도 동일한 방식으로 추출한다. 마지막으로 텍스트는 id를 추출하기 위해 나눈 항목 중 두번째 항목을 가져와 `>`로 나누면 텍스트가 추출되게 된다.
 
 예를 들면 다음과 같다.
 
-~~~
-nodes[0] => <h1 id="logo" class="page-title">로고</h1>
+{% raw %}
+```
+html = '<h1 id="logo" class="page-title">로고</h1>
+<h2 id="about">About</h2>'
+nodes = html | strip | split: '<h'
+nodes[0] => 1 id="logo" class="page-title">로고</h1>
+
 currLevel = node[0] | replace: '"', '' | slice: 0, 1 | times: 1 => 1
 hTag = nodes[0] | split: '</h' => ['1 id="logo" class="page-title">로고', '1>']
 hTagId = hTag[0] | split: 'id="' => ['1 ', 'logo" class="page-title">로고']
@@ -137,22 +150,14 @@ hTagClass = hTagClass[1] | split: '"' => ['page-title', '>로고']
 hTagId[0] => 'logo'
 hTagText[1] => '로고'
 hTagClass[0] => 'page-title'
-~~~
-
-> **Note**   
-> 처음 공부할 때는 `content` 변수에 `toc`을 추가해 주고 포스트 파일의 머리글에 `toc: true`를 입력하면 목차가 자동으로 생성되는 줄 알았다. 아마 테마에서 이 기능을 지원하는 것으로 예상된다.
-
-본문이 나오기 전에 목차를 표시하도록 아래 코드를 추가한다.
-
-{% raw %}
-```liquid
-{%- if page.toc -%}
-	{% include toc.html html=content %}
-{% endif -%}
 ```
 {% endraw %}
 
-### 카테고리와 태그 목록
+> **Note**   
+> 처음 공부할 때는 `content` 변수에 `toc`을 추가해 주고 포스트 파일의 머리글에 `toc: true`를 입력하면 목차가 자동으로 생성되는 줄 알았다. 아마 테마에서 이 기능을 지원하는 것으로 예상된다.
+{: .notice--primary}
+
+## 카테고리와 태그 목록
 
 카테고리와 태그는 포스트 머리말에 입력한 정보를 가져와 출력하는 것으로 **변수와 머리말** 글을 참고하기 바란다.
 
@@ -207,7 +212,7 @@ hTagClass[0] => 'page-title'
 ```
 {: data-label="Output"}
 
-### SNS 공유 기능 추가
+## SNS 공유 기능 추가하기
 
 대부분의 SNS 사이트에서는 URL로 공유하는 기능을 제공하지만 **카카오톡**의 경우 **developers** 사이트에 가입해서 **Key**를 받아야 한다.
 
@@ -258,9 +263,12 @@ label:
 ```
 {: data-label="ui-text.yml"}
 
-#### Font Awesomew으로 간단한 로고 만들기
+> 나는 SNS로 공유 시 URL과 포스트 제목만을 보냈지만 포스트 이미지 등의 더 많은 정보를 전달할 수 있는 것 같다. 자세한 정보는 인터넷에서 찾아보기 바란다.
+{: .notice--warning}
 
-네이버와 카카오스토리 아이콘을 **Font Awesomew**의 N, K 모양을 이용해 만드는 방법이다.
+### Font Awesomew으로 간단한 로고 만들기
+
+네이버와 카카오스토리 아이콘을 **Font Awesomew**의 N, K 모양을 이용해 만드는 방법이다. 그런데 만들어 봤지만 모양이 예쁘지가 않다.
 
 ```css
 /* 네이버와 카카오스토리 공유 아이콘 폰트 */
@@ -297,14 +305,20 @@ label:
 {: data-label="CSS"}
 
 ```html
-<i class="fa fa-k fa-2x" aria-hidden="true">
-<i class="fa fa-n fa-2x" aria-hidden="true">
+<i class="fa fa-square-k fa-2x" aria-hidden="true"></i>
+<i class="fa fa-square-n fa-2x" aria-hidden="true"></i>
 ```
 {: data-label="HTML"}
 
-### 이전 글과 다음 글
+<div class="example">
+	<style>.example .fa-square-n,.fa-square-k{position:relative}.example .fa-square-n:after,.fa-square-k:after{color:#fff;font-size:.6em;position:absolute;top:0;bottom:0;left:0;right:0;display:flex;justify-content:center;align-items:center}.example .fa-square-n:before{content:"\f0c8";color:#2db400}.example .fa-square-n:after{content:"\4e"}.example .fa-square-k:before{content:"\f0c8";color:#fee500}.example .fa-square-k:after{content:"\4b"}</style>
+	<i class="fa fa-square-k fa-2x" aria-hidden="true"></i>
+	<i class="fa fa-square-n fa-2x" aria-hidden="true"></i>
+</div>
 
-`page.next`와 `page.previous` 변수를 활용해 이전 글과 다음 글을 출력한 것이다.
+## 이전 글과 다음 글
+
+`page.next`와 `page.previous` 변수를 활용해 이전 글과 다음 글로 이동하는 링크를 만들겠다.
 
 {% raw %}
 ```liquid
@@ -333,11 +347,12 @@ label:
 ```
 {% endraw %}
 
-### 관련글
+## 관련글
 
-> 나는 관련글을 출력하지 않았지만 나중에 사용할 수도 있어 적어 본다.
+`site.related_posts`는 현재 포스트와 관련된 포스트 목록을 10개 출력하는 변수이다. 이 변수를 활용해 관련글을 출력해 줄 수는 있지만 관련글을 선택하는 기준 또는 출력할 개수 등을 지정할 수가 없어 불편한 점이 있다.
 
-`site.related_posts`는 현재 포스트와 관련된 포스트 목록을 10개 출력하는 변수이다. 이 변수를 활용해 관련글을 출력해 줄 수는 있다. 하지만 관련글을 선택하는 기준 또는 출력할 개수 등을 지정할 수가 없어 불편한 점이 있다.
+> 나는 관련글이 현재 포스트를 기준으로 나오는 것이 아니어서 사용하지 않았지만 나중에 사용할 수도 있어 적어 본다.
+{: .notice--warning}
 
 {% raw %}
 ```liquid
@@ -349,7 +364,7 @@ label:
 ```
 {% endraw %}
 
-### 댓글 기능
+## 댓글 기능
 
 댓글 기능을 구현하려면 외부 기능을 가져와 사용해야 한다. 전에는 **Disqus**를 많이 사용했지만 광고가 많이 나오다 보니 요즘에는 다른 외부 기능들을 사용한다.
 
@@ -358,18 +373,15 @@ label:
 * [Utterances](https://utteranc.es/){:target="_blank"}
 
 > 나는 **Utterances**를 사용해 댓글 기능을 구현했다.
+{: .notice--warning}
 
-#### Utterances 적용하기
-
-1. 설치
+### Utterances 사용하기
 
 먼저 Github App에서 [Utterances](https://github.com/apps/utterances){:target="_blank"}를 설치해야 한다.
 
 이미 설치한 경우 **Configure** 버튼이 나오고, 설치가 안 되어 있다면 **Install** 버튼이 보일 것이다.
 
 **Install** 버튼을 누르면 저장소를 선택하는 화면이 나오는데 댓글을 이슈로 관리할 저장소를 선택하고 **Install** 버튼을 눌러 설치를 완료하면 된다.
-
-2. 설정
 
 **repo**에 `계정명/저장소이름`을 입력하면 된다. 그 다음은 블로그 포스트와 이슈 매핑 방법에 대한 설정이다.
 
@@ -380,10 +392,11 @@ label:
 * Issue title contains page title : 이슈 제목을 페이지 제목으로 지정
 
 > 나는 **Issue title contains page URL**로 지정했다.
+{: .notice--warning}
 
 나머지는 원하는 대로 설정하면 되고 모두 입력하면 **Enable Utterances**에 생성된 스크립트 코드를 복사해서 사용하면 된다.
 
-위에서 생성한 코드를 복사해서 사용해도 되지만 사용하기 편하도록 `_includes` 폴더에 `utterances.html`을 만들어 사용하겠다. 먼저 `_config.yml`에 아래 코드를 추가해 준다.
+위에서 생성한 코드를 복사해서 사용해도 되지만 사용하기 편하도록 `_includes` 폴더에 `comments.html`을 만들어 사용하겠다. 먼저 `_config.yml`에 아래 코드를 추가해 준다.
 
 ```yml
 utterances:
@@ -420,7 +433,7 @@ utterances:
 ```
 {% endraw %}
 
-### 마치며
+## 마치며
 
 지금까지 포스트의 콘텐츠를 출력하는 코드를 작성했다. 전체 코드는 다음과 같다.
 
@@ -519,7 +532,7 @@ layout: default
 {: data-label="_layouts/post.html"}
 {% endraw %}
 
-### 참고
+## 참고
 
 * [블로그/웹사이트에 SNS 공유버튼 추가하기 - Suji Kang BLOG](https://sjkangblog.github.io/sns%EA%B3%B5%EC%9C%A0%EB%B2%84%ED%8A%BC%EB%84%A3%EA%B8%B0.html){: target="_blank"}
 * [Bootstrap Social Media icons & buttons - examples & tutorial](https://mdbootstrap.com/docs/jquery/components/buttons-social/){: target="_blank"}

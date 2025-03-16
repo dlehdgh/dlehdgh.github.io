@@ -2,11 +2,18 @@
 title: "Github 블로그 - 12. 연도 아카이브 만들기"
 excerpt: ""
 categories: [blog]
-tags: [Github, Blog, Jekyll, 연도 아카이브]
+tags:
+  - Github
+  - Blog
+  - Jekyll
+  - 연도 아카이브
 date: 2023-12-23 20:21
+last_modified_at: 2025-03-07 16:18
 ---
 
 이번 시간에는 연도별로 포스트를 나열하는 페이지를 만들 것이다.
+
+## 연도 아카이브 만들기
 
 {% raw %}
 ```liquid
@@ -42,22 +49,20 @@ permalink: /year-archive/
 
 `assign postsByYear = site.posts | where_exp: "item", "item.hidden != true" | group_by_exp: 'post', 'post.date | date: "%Y"'`는 포스트의 날짜를 기준으로 그룹화하는 코드로 날짜의 형식을 `%Y`로 지정해주었기 때문에 연도별로 포스트가 그룹화되는 것이다. 만약 월별 또는 일별로 그룹화하고 싶다면 그에 맞는 날짜 형식을 사용하면 된다.
 
-기존과 달리 `year.name`은 연도를 의미하고 `year.items`은 해당 연도의 포스트 배열을 의미한다.
+카테고리 또는 태그와 달리 `year.name`은 연도를 의미하고 `year.items`은 해당 연도의 포스트 배열을 의미한다.
 
-<blockquote>
-**group_by_exp**
-
-배열 안의 항목들을 Liquid 표현식을 사용해 그룹 짓는다.
-
-{% raw %}
-```liquid
-{{ site.members | group_by_exp: "item", "item.graduation_year | truncate: 3, ''" }}
-```
-{: data-label="Input"}
-{% endraw %}
-
-```
-[{"name"=>"201", "items"=>[...]}, {"name"=>"200", "items"=>[...]}]
-```
-{: data-label="Output"}
-</blockquote>
+> **group_by_exp**
+>
+> 배열 안의 항목들을 Liquid 표현식을 사용해 그룹 짓는다.
+> {% raw %}
+> ```liquid
+> {{ site.members | group_by_exp: "item", "item.graduation_year | truncate: 3, ''" }}
+> ```
+> {: data-label="Input"}
+> {% endraw %}
+> 
+> ```
+> [{"name"=>"201", "items"=>[...]}, {"name"=>"200", "items"=>[...]}]
+> ```
+> {: data-label="Output"}
+{: .notice--primary}
