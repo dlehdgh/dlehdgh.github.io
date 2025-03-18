@@ -311,11 +311,11 @@ compress_html:
   ignore:
     envs: development
 
-# # Collections
-# collections:
-#   testing:
-#     output: true
-#     permalink: /:collection/:path/
+# Collections
+collections:
+  testing:
+    output: true
+    permalink: /:collection/:path/
 
 # Defaults
 defaults:
@@ -349,17 +349,20 @@ defaults:
       related: false
       sidebar:
         nav: "sidebar-category"
-  # # _testing
-  # - scope:
-  #     path: ""
-  #     type: testing
-  #   values:
-  #     layout: single
-  #     author_profile: true
-  #     read_time: true
-  #     comments: true
-  #     share: false
-  #     related: false
+  # _testing
+  - scope:
+      path: ""
+      type: testing
+    values:
+      layout: single
+      author_profile: true
+      show_date: true
+      read_time: true
+      comments: true
+      share: false
+      related: false
+      sidebar:
+        nav: "sidebar-category"
 
 # Custom
 paginate_size: 5
