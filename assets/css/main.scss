@@ -142,6 +142,15 @@ pre {
 		}
 	}
 
+	// 코드 블럭의 HTML 코드 미리보기 시 이미지 크기 지정
+	.highlight-preview {
+		@extend .notice--info;
+
+		img, [type="image"] {
+			width: 5rem;
+		}
+	}
+
 	// .notice 글자크기 변경
 	.notice {
 		font-size: 1em !important;
