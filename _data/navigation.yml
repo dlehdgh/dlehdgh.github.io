@@ -10,8 +10,8 @@ main:
     url: /categories/
   - title: "태그"
     url: /tags/
-  # - title: "접근성 테스트"
-  #   url: /testing/
+  - title: "접근성 테스트"
+    url: /testing/
 
 # sidebar navigation list
 sidebar-category:
