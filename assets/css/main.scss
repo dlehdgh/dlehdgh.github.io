@@ -40,6 +40,11 @@ pre {
 	tab-size: 4;
 }
 
+// 건너뛰기 링크
+.skip-links > ul > li > a {
+	padding: 0.5rem !important;
+}
+
 // 사이드바 카테고리 목록
 .sidebar .nav__list > ul > li {
 	$nav-padding-inline: 0.5rem;
