@@ -18,9 +18,9 @@ sidebar-category:
   - title: "Programming"
     children:
       - title: "블로그"
-        url: "/blog/"
+        url: /blog/
       - title: "Python"
-        url: "/python/"
+        url: /python/
       - title: "Javascript"
         url: /javascript/
       - title: "SCSS"
@@ -31,3 +31,7 @@ sidebar-category:
         url: /pc/
       - title: "안드로이드"
         url: /android/
+  - title: "AI 도구"
+    children:
+      - title: "YouTube 화면해설"
+        url: /ytb-commentary/
