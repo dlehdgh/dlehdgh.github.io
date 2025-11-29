@@ -194,9 +194,9 @@ function print(message) {
 	}
 
 	// 모드 변경 이벤트
-	$('#mode input[type="radio"]').change(function () {
+	$('#mode').change(function () {
 		const value = $(this).val();
-		const controls = $('#controls > input, #controls > select');
+		const controls = $('#tts_volume, #tts_speed');
 		if (value == 2) {
 			controls.attr('disabled', true);
 		} else {
