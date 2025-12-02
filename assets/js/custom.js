@@ -1,5 +1,47 @@
+// 기존 이벤트 유지
+// 검색 버튼
+$(".search__toggle").on("click", function () {
+	const is_visible = $(".search-content").hasClass("is--visible");
+	$(this).attr("aria-expanded", String(!is_visible));
+});
+// 토글 메뉴
+$("nav.greedy-nav .greedy-nav__toggle").on('click', function(){
+	const is_close = $(this).hasClass('close');
+	$(this).attr("aria-expanded", String(!is_close));
+});
+// 팔로우 메뉴 드롭다운
+$(".author__urls-wrapper button").on("click", function () {
+	const is_visible = $(".author__urls").hasClass("is--visible");
+	$(this).attr("aria-expanded", String(!is_visible));
+});
+
+/*
+// 카테고리 메뉴 드롭다운
+const _toc_checkbox = $("#ac-toc");
+const _toc_label = $('label[for="ac-toc"]');
+const _toc_menu = checkbox.parent().find('.nav__items');
+if (_toc_checkbox.length && _toc_menu.length) {
+	// _toc_menu.hide();
+	_toc_checkbox.on("change", function () {
+		// console.log('checked:', this.checked);
+		if (this.checked) {
+			_toc_menu.fadeIn(200);
+		} else {
+			_toc_menu.fadeOut(200);
+		}
+	});
+}
+*/
+
 $(document).ready(function () {
 	codeblock_generator();
+	
+	// 검색 양식에 초점이 이동하지 않는 문제
+	$("#search").removeAttr("tabindex");
+	// ARIA 속성 추가
+	$(".search__toggle, nav.greedy-nav .greedy-nav__toggle, .author__urls-wrapper button").each((i, el) => {
+		$(el).attr("aria-expanded", "false");
+	});
 });
 
 const codeblock_generator = () => {

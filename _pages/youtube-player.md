@@ -1,10 +1,13 @@
 ---
 title: "YouTube 화면해설 플레이어"
 layout: archive
-permalink: /ytb-player/
+permalink: /tools/ytb-player/
 excerpt: ""
 toc: false
 last_modified_at: 2025-11-29 11:33
+scripts:
+  - https://www.youtube.com/iframe_api
+  - /assets/js/ytplayer/player.min.js
 ---
 
 <style>
@@ -45,12 +48,4 @@ last_modified_at: 2025-11-29 11:33
 		<option value="2.0">2.0</option>
 	</select>
 </div>
-<a href="{{ '/ytb-commentary/' | relative_url }}" class="btn btn--success">이전으로</a>
-
-<!-- jQuery -->
-<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
-<!-- Youtube API -->
-<script src="https://www.youtube.com/iframe_api"></script>
-<!-- Youtube Player -->
-<script src="{{ '/assets/js/ytplayer/common.js' | relative_url }}"></script>
-<script src="{{ '/assets/js/ytplayer/player.js' | relative_url }}"></script>
+<a href="{{ '/tools/ytb-commentary/' | relative_url }}" class="btn btn--success">이전으로</a>

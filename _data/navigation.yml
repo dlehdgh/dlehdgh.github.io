@@ -12,6 +12,9 @@ main:
     url: /tags/
   - title: "접근성 테스트"
     url: /testing/
+  - title: "도구"
+    url: /tools/
+
 
 # sidebar navigation list
 sidebar-category:
@@ -31,7 +34,7 @@ sidebar-category:
         url: /pc/
       - title: "안드로이드"
         url: /android/
-  - title: "AI 도구"
-    children:
-      - title: "YouTube 화면해설"
-        url: /ytb-commentary/
+  # - title: "AI 도구"
+  #   children:
+  #     - title: "YouTube 화면해설"
+  #       url: /ytb-commentary/

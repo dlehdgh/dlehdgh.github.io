@@ -40,6 +40,40 @@ pre {
 	tab-size: 4;
 }
 
+// details 스타일 지정
+details.collapse {
+	$pd: 0.5rem;
+	border: 1px solid $gray;
+	border-radius: $border-radius;
+	padding: $pd;
+	margin-bottom: 0.5rem;
+
+	& summary {
+		color: #fff;
+		padding: $pd;
+		margin: -$pd;
+		background-color: $dark-gray;
+		border-radius: $border-radius;
+	}
+	&[open] summary {
+		margin-bottom: $pd;
+		border-bottom-left-radius: 0;
+		border-bottom-right-radius: 0;
+	}
+	&.collapse-primary summary {
+		background-color: $primary-color;
+	}
+	&.collapse-success summary {
+		background-color: $success-color;
+	}
+	&.collapse-warning summary {
+		background-color: $warning-color;
+	}
+	&.collapse-danger summary {
+		background-color: $danger-color;
+	}
+}
+
 // 건너뛰기 링크
 .skip-links > ul > li > a {
 	padding: 0.5rem !important;
@@ -69,6 +103,30 @@ pre {
 	ul > li > a::before {
 		content: "📂";
 		padding-right: 4px;
+	}
+}
+
+// 사이드바 카테고리 목록 토글 버튼은 CSS만으로 제어함
+.nav__list {
+	@include breakpoint(max-width $large - 1px) {
+		input[type="checkbox"] {
+			display: inline-block;
+			position: absolute;
+			clip: rect(0, 0, 0, 0);
+			pointer-events: none;
+
+			&:hover + label,
+			&:focus + label {
+				outline: solid;
+			}
+		}
+		// 카테고리 숨김 처리
+		input:checked ~ .nav__items {
+			display: block !important;
+		}
+		input:not(:checked) ~ .nav__items {
+			display: none !important;
+		}
 	}
 }
 
