@@ -260,3 +260,41 @@ details.collapse {
 		margin-bottom: 1em;
 	}
 }
+
+// 툴팁
+[data-tooltip] {
+	$tooltip-bg: #000;
+	$tooltip-border: 5px;
+	position: relative;
+
+	&:hover, &:focus {
+		&::before, &::after {
+			font-size: 0.8em;
+			color: #fff;
+			position: absolute;
+			left: 50%;
+			transform: translateX(-50%);
+			transition: all 2s ease;
+			white-space: nowrap;
+		}
+		&::before {
+			content: attr(data-tooltip);
+			bottom: 107%;
+			display: inline-block;
+			padding: 0.25rem 0.5rem;
+			max-width: 200px;
+			border-radius: 5px;
+			background-color: $tooltip-bg;
+			white-space: nowrap;
+			overflow: hidden;
+			text-overflow: ellipsis;
+		}
+		&::after {
+			content: '';
+			bottom: 100%;
+			border-top: $tooltip-border solid $tooltip-bg;
+			border-left: $tooltip-border solid transparent;
+			border-right: $tooltip-border solid transparent;
+		}
+	}
+}
