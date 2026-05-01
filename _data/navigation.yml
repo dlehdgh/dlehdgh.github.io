@@ -30,8 +30,8 @@ sidebar-category:
         url: /scss/
   - title: "IT"
     children:
-      - title: "PC"
-        url: /pc/
+      - title: "Workspace"
+        url: /workspace/
       - title: "안드로이드"
         url: /android/
   # - title: "AI 도구"

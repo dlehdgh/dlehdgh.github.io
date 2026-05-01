@@ -1,7 +1,7 @@
 ---
 title: "구글 크롬 항상 시크릿 모드로 실행하기"
 excerpt: ""
-categories: [pc]
+categories: [workspace]
 tags:
   - Google
   - Chrome
