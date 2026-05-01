@@ -8,6 +8,8 @@ last_modified_at: 2025-12-02 16:20
 tools:
   - title: "Youtube 화면해설 생성하기"
     url: /tools/ytb-commentary/
+  - title: "읽어주는 베리어프리 뉴스"
+    url: /tools/blind-news/
 ---
 
 <nav class="tools">
