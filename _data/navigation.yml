@@ -1,0 +1,40 @@
+# main links
+main:
+  - title: "소개"
+    url: /about/
+  # - title: "포스트"
+  #   url: /posts/
+  - title: "연도 아카이브"
+    url: /year-archive/
+  - title: "카테고리"
+    url: /categories/
+  - title: "태그"
+    url: /tags/
+  - title: "접근성 테스트"
+    url: /testing/
+  - title: "도구"
+    url: /tools/
+
+
+# sidebar navigation list
+sidebar-category:
+  - title: "Programming"
+    children:
+      - title: "블로그"
+        url: /blog/
+      - title: "Python"
+        url: /python/
+      - title: "JavaScript"
+        url: /javascript/
+      - title: "SCSS"
+        url: /scss/
+  - title: "IT"
+    children:
+      - title: "Workspace"
+        url: /workspace/
+      - title: "안드로이드"
+        url: /android/
+  # - title: "AI 도구"
+  #   children:
+  #     - title: "YouTube 화면해설"
+  #       url: /ytb-commentary/

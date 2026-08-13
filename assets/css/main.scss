@@ -1,0 +1,300 @@
+---
+# Only the main Sass file needs front matter (the dashes are enough)
+---
+
+@charset "utf-8";
+
+$doc-font-size: 16px !default;
+
+@import "minimal-mistakes/skins/{{ site.minimal_mistakes_skin | default: 'default' }}"; // skin
+@import "minimal-mistakes"; // main partials
+
+// font 크기 재정의 - import 이후 정의해야 함.
+// 원본위치: [remote-theme]/_sass/minimal-mistakes/_reset.scss
+html {
+	@include breakpoint($medium) {
+		font-size: $doc-font-size * 1.125; // $doc-font-size-medium
+	}
+	@include breakpoint($large) {
+		font-size: $doc-font-size * 1.125;; // $doc-font-size-large
+	}
+	@include breakpoint($x-large) {
+		font-size: $doc-font-size * 1.25; // $doc-font-size-x-large
+	}
+}
+
+a {
+	text-decoration: none !important;
+
+	&:hover,
+	&:focus,
+	&:active {
+		text-decoration: none !important;
+	}
+}
+blockquote {
+	margin-left: 0;
+	font-style: normal;
+}
+pre {
+	tab-size: 4;
+}
+
+// details 스타일 지정
+details.collapse {
+	$pd: 0.5rem;
+	border: 1px solid $gray;
+	border-radius: $border-radius;
+	padding: $pd;
+	margin-bottom: 0.5rem;
+
+	& summary {
+		color: #fff;
+		padding: $pd;
+		margin: -$pd;
+		background-color: $dark-gray;
+		border-radius: $border-radius;
+	}
+	&[open] summary {
+		margin-bottom: $pd;
+		border-bottom-left-radius: 0;
+		border-bottom-right-radius: 0;
+	}
+	&.collapse-primary summary {
+		background-color: $primary-color;
+	}
+	&.collapse-success summary {
+		background-color: $success-color;
+	}
+	&.collapse-warning summary {
+		background-color: $warning-color;
+	}
+	&.collapse-danger summary {
+		background-color: $danger-color;
+	}
+}
+
+// 건너뛰기 링크
+.skip-links > ul > li > a {
+	padding: 0.5rem !important;
+}
+
+// 사이드바 카테고리 목록
+.sidebar .nav__list > ul > li {
+	$nav-padding-inline: 0.5rem;
+	$nav-active-color: #007bff;
+	a {
+		display: block;
+		padding: 0.25rem $nav-padding-inline;
+
+		&:hover, a:focus {
+			color: #fff;
+			background-color: $nav-active-color;
+		}
+		&.active {
+			margin-inline-start: 0;
+			padding-inline: $nav-padding-inline;
+		}
+	}
+	.nav__sub-title::before {
+		content: "📁";
+		padding-right: 4px;
+	}
+	ul > li > a::before {
+		content: "📂";
+		padding-right: 4px;
+	}
+}
+
+// 사이드바 카테고리 목록 토글 버튼은 CSS만으로 제어함
+.nav__list {
+	@include breakpoint(max-width $large - 1px) {
+		input[type="checkbox"] {
+			display: inline-block;
+			position: absolute;
+			clip: rect(0, 0, 0, 0);
+			pointer-events: none;
+
+			&:hover + label,
+			&:focus + label {
+				outline: solid;
+			}
+		}
+		// 카테고리 숨김 처리
+		input:checked ~ .nav__items {
+			display: block !important;
+		}
+		input:not(:checked) ~ .nav__items {
+			display: none !important;
+		}
+	}
+}
+
+.entries-list {
+	// 홈화면의 포스트 목록
+	.list__item > article.archive__item > .archive__item-title {
+		margin-top: 1em !important;
+	}
+	// 페이지 번호 네비게이션 여백 설정
+	+ .pagination {
+		margin-top: 0 !important;
+		// padding-top: 0 !important;
+	}
+	// 카테그리 목록에서 제목과 여백 지정
+	.archive > h1#page-title + & {
+		margin-top: 2em;
+	}
+}
+
+.archive__item {
+	// 포스트 목록에서 포스트의 날짜 정보가 작음
+	> .page__meta {
+		font-size: 0.75em;
+	}
+	// 검색 결과에서 포스트 요약 정보 숨기기(다른 곳은 margin-bottom이 없어져 이상하게 보임)
+	#results > .list__item > & {
+		margin-bottom: 1em;
+
+		&-excerpt {
+			display: none;
+		}
+	}
+}
+
+// single layout의 헤더에 테두리와 여백 지정
+.page__header {
+	border-bottom: 1px solid $gray;
+	float: inline-start;
+	width: 100%;
+	margin-bottom: 2em;
+}
+
+.page__content {
+	// 콘텐츠가 제목 태그로 시작하면 margin이 중복되는 문제로 margin-top을 0으로 설정
+	aside + * {
+		margin-top: 0;
+	}
+
+	// 링크 색상 지정
+	aside a {
+		color: inherit;
+	}
+	a {
+		color: $behance-color;
+	}
+
+	// 해딩 태그, 코드 블럭의 여백을 p 태그와 같게 설정
+	$mb: 1.3em;
+	@for $i from 1 through 6 {
+		h#{$i} {
+			margin-bottom:  $mb;
+		}
+	}
+	div.highlighter-rouge, figure.highlight {
+		margin-bottom: $mb * 1.2;
+	}
+
+	// 인라인 코드 블럭
+	code.highlighter-rouge {
+		// color: #f8f8f2
+		// background-color: #272822 !important;
+		color: #0d6efd;
+	}
+
+	// 코드 라벨
+	.codeblock-label {
+		background-color: $light-gray;
+		color: $darker-gray;
+		display: inline-block;
+		padding: 0.25rem 0.5rem;
+		margin-bottom: 0 !important;
+		border: {
+			radius: $border-radius;
+			bottom-left-radius: 0;
+			bottom-right-radius: 0;
+		}
+
+		+ .highlighter-rouge {
+			border-top-left-radius:  0;
+		}
+	}
+
+	// 코드 블럭의 HTML 코드 미리보기 시 이미지 크기 지정
+	.highlight-preview {
+		@extend .notice--info;
+
+		img, [type="image"] {
+			width: 5rem;
+		}
+	}
+
+	// .notice 글자크기 변경
+	.notice {
+		font-size: 1em !important;
+
+		&--primary,
+		&--info,
+		&--warning,
+		&--danger,
+		&--success {
+			font-size: 1em !important;
+		}
+	}
+}
+
+// 저작권 정보
+.page__ccl {
+	position: relative;
+	float: inline-start;
+	width: 100%;
+	clear: both;
+	padding-bottom: 1.5em;
+	margin: {
+		inline: 0;
+		top: 2em;
+		bottom: 0.5em;
+	}
+	border-bottom: 1px solid #cecfd1;
+
+	p {
+		margin-bottom: 1em;
+	}
+}
+
+// 툴팁
+[data-tooltip] {
+	$tooltip-bg: #000;
+	$tooltip-border: 5px;
+	position: relative;
+
+	&:hover, &:focus {
+		&::before, &::after {
+			font-size: 0.8em;
+			color: #fff;
+			position: absolute;
+			left: 50%;
+			transform: translateX(-50%);
+			transition: all 2s ease;
+			white-space: nowrap;
+		}
+		&::before {
+			content: attr(data-tooltip);
+			bottom: 107%;
+			display: inline-block;
+			padding: 0.25rem 0.5rem;
+			max-width: 200px;
+			border-radius: 5px;
+			background-color: $tooltip-bg;
+			white-space: nowrap;
+			overflow: hidden;
+			text-overflow: ellipsis;
+		}
+		&::after {
+			content: '';
+			bottom: 100%;
+			border-top: $tooltip-border solid $tooltip-bg;
+			border-left: $tooltip-border solid transparent;
+			border-right: $tooltip-border solid transparent;
+		}
+	}
+}
